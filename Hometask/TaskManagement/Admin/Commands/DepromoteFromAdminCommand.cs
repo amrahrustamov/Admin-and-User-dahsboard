@@ -14,12 +14,16 @@ namespace TaskManagement.Admin.Commands
 
                  foreach (User user in DataContext.Users)
                  {
-                     if (user.Email == email)
+                     if (user.Email == email && user.IsAdmin == true)
                      {
                          user.IsAdmin = false;
-                         Console.WriteLine("The owner of this email already is not an admin");
-                         return;
+                        Console.WriteLine("The owner of this email has become user");
+                        return;
                      }
+                    if (user.Email == email && user.IsAdmin != true)
+                    {
+                        Console.WriteLine("The owner of this email already is user");
+                    }
                  }
                  Console.WriteLine("Email not found");
                  return;

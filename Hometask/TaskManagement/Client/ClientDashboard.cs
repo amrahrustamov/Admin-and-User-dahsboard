@@ -23,7 +23,7 @@ namespace TaskManagement.Client
                 switch (command)
                 {
                     case "/update-settings":
-                        AddUpdateSettingCommand.Handle();
+                        AddUpdateSettingCommand.Handle(user);
                         return;
                     case "/close-account":
                         RemoveUserByEmail.Handle();

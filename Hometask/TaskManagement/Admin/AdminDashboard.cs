@@ -49,7 +49,7 @@ namespace TaskManagement.Admin
                         DepromoteFromAdminCommand.Handle();
                         break;
                     case "/update-user-setting":
-                        AddUpdateSettingCommand.Handle();
+                        AddUpdateSettingCommand.Handle(user);
                         break;
                     case "/remove-user":
                         RemoveUserByEmail.Handle();
