@@ -1,4 +1,5 @@
-﻿using TaskManagement.Database;
+﻿using System.Text.RegularExpressions;
+using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Utilities;
 
@@ -19,7 +20,7 @@ namespace TaskManagement.Common
                 if (IsValidFirstName(firstName))
                     return firstName;
 
-                Console.WriteLine("Some information is not correnct");
+                Console.WriteLine("Some information is not correct");
             }
         }
         private bool IsValidFirstName(string firstName)
@@ -74,23 +75,7 @@ namespace TaskManagement.Common
         }
         #endregion
 
-        #region Email
-        public string SendMessageByEmail()
-        {
-             while(true)
-             {
-                  Console.WriteLine("Pls enter email : ");
-                  string email = Console.ReadLine()!;
-                  
-                  if (IsEmailExists(email))
-                   return email;
-
-                  else
-                  {
-                      Console.WriteLine("This email is not valid! Try again");
-                  }               
-             }        
-        }
+        #region Email    
         public string GetAndValidateEmail()
         {
             while (true)
@@ -98,38 +83,42 @@ namespace TaskManagement.Common
                 Console.WriteLine("Pls enter email : ");
                 string email = Console.ReadLine()!;
 
-                if(CheckDomain(email) && CheckSeparator(email) && CheckReceipent(email) && CheckEmailLength(email))
-                {
-                    if (!IsEmailExists(email))
-                    return email;
-                    else
-                        Console.WriteLine("Your email is already used in system, pls try another email");
-                }                          
+                if(CheckDomain(email) == true && CheckSeparator(email) == true && CheckReceipent(email) == true && 
+                   CheckEmailLength(email) == true && !IsEmailExists(email) == true)
+                    return email;                          
             }
         }
         public bool CheckDomain(string email)
-        {
-            string domainPattern = "^@code.edu.az\b";
-            if (email == domainPattern)
+        {         
+            string domainPattern = "@code.edu.az$";
+
+            Regex regex = new Regex(domainPattern);
+            Match match = regex.Match(email);
+            if (match.Success)
                 return true;
-            return false;          
+            Console.WriteLine("Incorrect input! In this app used only domain of code.edu.az");
+            return false;         
         }
-        public bool CheckSeparator(string email)
+        public bool CheckSeparator(string email) /// this is extra control of seperator
         {
             string seperatorPattern = "(@)code.edu.az";
-            if(email == seperatorPattern)
-                return true;
+            Regex regex = new Regex(seperatorPattern);
+            Match match = regex.Match(email);
+            if (match.Success)
+                return true; 
+                Console.WriteLine("Incorrect input! There is no @ sign in your input");
             return false;
         }
         public bool CheckReceipent(string email)
         {
-            string pattern = @"\w+@";
-            while (true)
-            {
-                if (email == pattern)
-                    return true;
-                return false;              
-            }
+            string receipentPattern = "[^a-zA-Z0-9_@]@code.edu.az";
+            
+            Regex regex = new Regex(receipentPattern);
+            Match match = regex.Match(email);
+            if (!match.Success)
+                return true;
+            Console.WriteLine("Incorrect input! Only letters and numbers are allowed");
+            return false;
         }
         public bool CheckEmailLength(string email)
         {
@@ -145,8 +134,8 @@ namespace TaskManagement.Common
                        ///control length
             if (i >= 10 && i <= 30)
                 return true;
-            else
-                return false;
+            Console.WriteLine("Incorrect input! Text length must be between min 10 and max 30 charachters");
+            return false;
         }
         private bool IsEmailExists(string email)
         {
@@ -155,12 +144,12 @@ namespace TaskManagement.Common
                 if (User.Email == email)
                     return true;
             }
+            Console.WriteLine("This email is already used in system, pls try another email");
             return false;
         }
         #endregion
 
         #region Message
-
         public string CheckMessage()
         {
             while(true)
@@ -179,7 +168,22 @@ namespace TaskManagement.Common
                 }
             }           
         }
-
+        public string SendMessageByEmail()
+        {
+             while(true)
+             {
+                  Console.WriteLine("Pls enter email : ");
+                  string email = Console.ReadLine()!;
+                  
+                  if (IsEmailExists(email))
+                   return email;
+        
+                  else
+                  {
+                      Console.WriteLine("This email is not valid! Try again");
+                  }               
+             }        
+        }
         #endregion
 
         #region Common

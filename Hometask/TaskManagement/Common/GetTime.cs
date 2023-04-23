@@ -18,9 +18,9 @@ namespace TaskManagement.Common
             int hour = DateTime.Now.Hour;
             int minute = DateTime.Now.Minute;
             int userId = User.IdCounter;
-            string userEmail = User.Email;
+            string userEmail = User.Email!;
 
-            HistoryOfRegistration historyOfRegistration = new HistoryOfRegistration(year, month, day, hour, minute, userId, userEmail);
+            HistoryOfRegistration historyOfRegistration = new HistoryOfRegistration(year, month, day, hour, minute, userId, userEmail!);
             DataContext.DatesOfRegister.Add(historyOfRegistration);
         }
     }
