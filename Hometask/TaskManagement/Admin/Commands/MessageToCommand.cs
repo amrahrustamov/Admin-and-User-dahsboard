@@ -6,11 +6,11 @@ namespace TaskManagement.Admin.Commands
 {
     public class MessageToCommand
     {
-        public static void Handle(string user)
+        public static void Handle()
         {
             UserValidator userValidator = new UserValidator();
 
-            string sender = user;
+            string sender = User.Email!;
             string recipient = userValidator.SendMessageByEmail();
             string message = userValidator.CheckMessage();
 

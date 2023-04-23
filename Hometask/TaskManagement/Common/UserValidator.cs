@@ -115,7 +115,7 @@ namespace TaskManagement.Common
         {
             foreach (User user in DataContext.Users)
             {
-                if (user.Email == email)
+                if (User.Email == email)
                     return true;
             }
             return false;

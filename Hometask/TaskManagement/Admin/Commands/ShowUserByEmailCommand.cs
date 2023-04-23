@@ -16,7 +16,7 @@ namespace TaskManagement.Admin.Commands
 
                     foreach (User user in DataContext.Users)
                     {
-                        if (user.Email == emailForSearch)
+                        if (User.Email == emailForSearch)
                         {
                             Console.WriteLine(user.GetShortInfo());
                             return;

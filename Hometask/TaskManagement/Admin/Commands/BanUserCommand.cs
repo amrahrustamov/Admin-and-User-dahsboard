@@ -12,7 +12,7 @@ namespace TaskManagement.Admin.Commands
 
             foreach (User user in DataContext.Users)
             {
-                if (user.Email == email)
+                if (User.Email == email)
                 {
                     if (user.IsAdmin == true)
                     {

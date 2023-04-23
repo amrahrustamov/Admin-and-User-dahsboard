@@ -19,7 +19,7 @@ namespace TaskManagement.Admin.Commands
 
             foreach (User user in DataContext.Users)
             {
-                if (user.Email == email && user.Password == password)
+                if (User.Email == email && user.Password == password)
                 {
                     if (user.IsAdmin == true)
                     {

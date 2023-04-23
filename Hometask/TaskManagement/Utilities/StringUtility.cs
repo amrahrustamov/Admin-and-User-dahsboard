@@ -56,7 +56,7 @@ namespace TaskManagement.Utilities
         {
             if (text.Length <= length || length < 0)
             {
-                return default;
+                return default!;
             }
 
             string subString = "";

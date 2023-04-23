@@ -58,7 +58,7 @@ namespace TaskManagement.Admin
                         BanUserCommand.Handle();
                         break;
                     case "/message-to":
-                        MessageToCommand.Handle(user.Email);
+                        MessageToCommand.Handle();
                         break;
                     case "/logout":
                         Console.WriteLine("Bye-bye");

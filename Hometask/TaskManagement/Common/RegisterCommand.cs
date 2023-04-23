@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Utilities;
 
 namespace TaskManagement.Common
 {
@@ -16,6 +17,7 @@ namespace TaskManagement.Common
 
             User human = new User(firstName, lastName, password, email);
             DataContext.Users.Add(human);
+            GetTime.GetTimes();
         }
     }
 }

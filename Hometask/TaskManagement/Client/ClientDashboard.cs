@@ -29,7 +29,7 @@ namespace TaskManagement.Client
                         RemoveUserByEmail.Handle();
                         return;
                     case "/messages":
-                        Messages.Handle(user.Email);
+                        Messages.Handle(User.Email!);
                         return;
                     default:
                         Console.WriteLine("Invalid input, pls try again");
