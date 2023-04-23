@@ -133,7 +133,17 @@ namespace TaskManagement.Common
         }
         public bool CheckEmailLength(string email)
         {
-            if (email.Length >= 10 && email.Length <= 30)
+            int i = 0;
+            while(true)  ///find length
+            {
+                char atSign = '@';
+                if (email[i] != atSign)
+                    i++;
+                else
+                    break;
+            }
+                       ///control length
+            if (i >= 10 && i <= 30)
                 return true;
             else
                 return false;
