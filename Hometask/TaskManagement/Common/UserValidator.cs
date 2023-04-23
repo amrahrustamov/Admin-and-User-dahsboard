@@ -93,23 +93,60 @@ namespace TaskManagement.Common
         }
         public string GetAndValidateEmail()
         {
-            char AT_SIGN = '@';
-
             while (true)
             {
                 Console.WriteLine("Pls enter email : ");
                 string email = Console.ReadLine()!;
 
-                if (_utility.Contains(email, AT_SIGN))
+                if(CheckDomain(email) && CheckSeparator(email) && CheckReceipent(email) && CheckEmailLength(email))
                 {
                     if (!IsEmailExists(email))
-                        return email;
+                    return email;
                     else
                         Console.WriteLine("Your email is already used in system, pls try another email");
-                }
-                else
-                    Console.WriteLine("Ensure that your email contains @ characheter");
+                }                          
             }
+        }
+        public bool CheckDomain(string email)
+        {
+            string domainPattern = "^@code.edu.az\b";
+            if (email == domainPattern)
+                return true;
+            return false;          
+        }
+        public bool CheckSeparator(string email)
+        {
+            string seperatorPattern = "(@)code.edu.az";
+            if(email == seperatorPattern)
+                return true;
+            return false;
+        }
+        public bool CheckReceipent(string email)
+        {
+            string pattern = @"\w+@";
+            while (true)
+            {
+                if (email == pattern)
+                    return true;
+                return false;              
+            }
+        }
+        public bool CheckEmailLength(string email)
+        {
+            int i = 0;
+            while(true)  ///find length
+            {
+                char atSign = '@';
+                if (email[i] != atSign)
+                    i++;
+                else
+                    break;
+            }
+                       ///control length
+            if (i >= 10 && i <= 30)
+                return true;
+            else
+                return false;
         }
         private bool IsEmailExists(string email)
         {
