@@ -18,6 +18,7 @@ namespace TaskManagement.Common
             User human = new User(firstName, lastName, password, email);
             DataContext.Users.Add(human);
             GetTime.GetTimes();
+            Console.WriteLine("You have successfully registered");
         }
     }
 }
