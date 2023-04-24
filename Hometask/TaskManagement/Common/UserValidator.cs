@@ -83,8 +83,8 @@ namespace TaskManagement.Common
                 Console.WriteLine("Pls enter email : ");
                 string email = Console.ReadLine()!;
 
-                if(CheckDomain(email) == true && CheckSeparator(email) == true && CheckReceipent(email) == true && 
-                   CheckEmailLength(email) == true && IsEmailExists(email) == true)
+                if(CheckReceipent(email) == true && CheckEmailLength(email) == true && CheckSeparator(email) == true
+                    && CheckDomain(email) == true && IsEmailExists(email) == true)
                     return email;                          
             }
         }
@@ -101,12 +101,12 @@ namespace TaskManagement.Common
         }
         public bool CheckSeparator(string email) /// this is extra control of seperator
         {
-            string seperatorPattern = "(@)code.edu.az";
+            string seperatorPattern = "@{1}";
             Regex regex = new Regex(seperatorPattern);
             Match match = regex.Match(email);
             if (match.Success)
                 return true; 
-                Console.WriteLine("Incorrect input! There is no @ sign in your input");
+                Console.WriteLine("Incorrect input! Must be one @ sign in your input");
             return false;
         }
         public bool CheckReceipent(string email)
@@ -117,7 +117,7 @@ namespace TaskManagement.Common
             Match match = regex.Match(email);
             if (!match.Success)
                 return true;
-            Console.WriteLine("Incorrect input! Only letters and numbers are allowed");
+            Console.WriteLine("Incorrect input! Only (min 1)letters and numbers(min1) are allowed");
             return false;
         }
         public bool CheckEmailLength(string email)
@@ -126,7 +126,7 @@ namespace TaskManagement.Common
             while(true)  ///find length
             {
                 char atSign = '@';
-                if (email[i] != atSign)
+                if (email[i] != atSign && i < email.Length - 1)
                     i++;
                 else
                     break;
@@ -142,8 +142,10 @@ namespace TaskManagement.Common
             foreach (User user in DataContext.Users)
             {
                 if (User.Email == email)
-                Console.WriteLine("This email is already used in system, pls try another email");
-                return false;
+                {
+                    Console.WriteLine("This email is already used in system, pls try another email");
+                    return false;
+                }
             }
             return true;
         }
