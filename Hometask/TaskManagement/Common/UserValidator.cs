@@ -84,7 +84,7 @@ namespace TaskManagement.Common
                 string email = Console.ReadLine()!;
 
                 if(CheckDomain(email) == true && CheckSeparator(email) == true && CheckReceipent(email) == true && 
-                   CheckEmailLength(email) == true && !IsEmailExists(email) == true)
+                   CheckEmailLength(email) == true && IsEmailExists(email) == true)
                     return email;                          
             }
         }
@@ -142,10 +142,10 @@ namespace TaskManagement.Common
             foreach (User user in DataContext.Users)
             {
                 if (User.Email == email)
-                    return true;
+                Console.WriteLine("This email is already used in system, pls try another email");
+                return false;
             }
-            Console.WriteLine("This email is already used in system, pls try another email");
-            return false;
+            return true;
         }
         #endregion
 
