@@ -12,12 +12,14 @@ namespace TaskManagement.Admin.Commands
     {
         public static void Handle()
         {
-            for (int i = 0; i < DataContext.Blogs.Count; i++)
+            foreach (Blog blog in DataContext.Blogs)
             {
-                Blog blog = DataContext.Blogs[i];
-
-                Console.WriteLine($"Sender : {blog.Owner.Name} Blog name : {blog.Title} Blog ID : {blog.Id} ");
-                Console.WriteLine(blog.Content);                                  
+                if(blog.Status == BlogStatus.Created)
+                {
+                    Console.WriteLine($"Blog ID : {blog.Id} Blog name : {blog.Title} Blog status : {blog.Status}");
+                    Console.WriteLine("Blog : ");
+                    Console.WriteLine(blog.Content);                                                    
+                }
             }
         }       
     }

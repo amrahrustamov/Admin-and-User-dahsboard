@@ -20,9 +20,7 @@ namespace TaskManagement.Admin.Commands
             {
                 if(userBlogs.Id == id)
                 {
-                    //userBlogs.Status == BlogStatus.Approved;
-                    //DataContext.SaveChanges();
-
+                    userBlogs.Status = BlogStatus.Approved;
                     return;
                 }
             }
