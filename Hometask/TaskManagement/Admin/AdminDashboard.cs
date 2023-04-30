@@ -22,6 +22,7 @@ namespace TaskManagement.Admin
                 Console.WriteLine("/remove-user");
                 Console.WriteLine("/ban-user");
                 Console.WriteLine("/message-to");
+                Console.WriteLine("/check-blogs");
                 Console.WriteLine("/logout");
                 Console.WriteLine("");
 
@@ -56,6 +57,9 @@ namespace TaskManagement.Admin
                         break;
                     case "/ban-user":
                         BanUserCommand.Handle();
+                        break;
+                    case "/check-blogs":
+                        CheckBlogsCommand.Handle();
                         break;
                     case "/message-to":
                         MessageToCommand.Handle();

@@ -18,9 +18,9 @@ namespace TaskManagement.Admin.Commands
                         User user = DataContext.Users[j];
                         int counter = 1;
 
-                        if(User.Email == inbox.Sender)
+                        if(user.Email == inbox.Sender)
                         {                   
-                            Console.WriteLine($"{counter}.{user.Name} {user.LastName} {User.Email} | {inbox.Message}");
+                            Console.WriteLine($"{counter}.{user.Name} {user.LastName} {user.Email} | {inbox.Message}");
                             Console.WriteLine("");
                             counter++;
                         }

@@ -1,6 +1,7 @@
 ﻿using TaskManagement.Common;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Services;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -8,9 +9,10 @@ namespace TaskManagement.Admin.Commands
     {
         public static void Handle()
         {
+            
             UserValidator userValidator = new UserValidator();
 
-            string sender = User.Email!;
+            string sender = UserServices.CurrentUser.Email;
             string recipient = userValidator.SendMessageByEmail();
             string message = userValidator.CheckMessage();
 

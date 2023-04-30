@@ -5,6 +5,7 @@ namespace TaskManagement.Admin.Commands
 {
     public class BanUserCommand
     {
+        
         public static void Handle()
         {
             Console.Write("Add email : ");
@@ -12,7 +13,7 @@ namespace TaskManagement.Admin.Commands
 
             foreach (User user in DataContext.Users)
             {
-                if (User.Email == email)
+                if (user.Email == email)
                 {
                     if (user.IsAdmin == true)
                     {

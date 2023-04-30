@@ -19,7 +19,7 @@ namespace TaskManagement.Common
             {
                 User user = DataContext.Users[i];
 
-                if (User.Email == email && user.Password == password && user.IsDeactive == false)
+                if (user.Email == email && user.Password == password && user.IsDeactive == false)
                 {
                     if (user.IsAdmin)
                     {

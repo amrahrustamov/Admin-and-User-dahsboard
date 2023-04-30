@@ -11,11 +11,12 @@ namespace TaskManagement.Client
 
             while (true)
             {
-                  Console.WriteLine("");
-                  Console.WriteLine("/update-settings");
-                  Console.WriteLine("/close-account");
-                  Console.WriteLine("/messages");
-                  Console.WriteLine("");              
+                Console.WriteLine("");
+                Console.WriteLine("/update-settings");
+                Console.WriteLine("/close-account");
+                Console.WriteLine("/messages");
+                Console.WriteLine("/add-blog");
+                Console.WriteLine("");              
 
                 Console.Write("Add command : ");
                 string command = Console.ReadLine()!;
@@ -29,7 +30,10 @@ namespace TaskManagement.Client
                         RemoveUserByEmail.Handle();
                         return;
                     case "/messages":
-                        Messages.Handle(User.Email!);
+                        Messages.Handle(user.Email!);
+                        return;
+                    case "/add-blog":
+                        AddBlog.AddBlogs();
                         return;
                     default:
                         Console.WriteLine("Invalid input, pls try again");

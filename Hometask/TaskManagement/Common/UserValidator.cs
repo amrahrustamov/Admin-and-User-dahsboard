@@ -17,7 +17,7 @@ namespace TaskManagement.Common
                 Console.WriteLine("Pls enter first name : ");
                 string firstName = Console.ReadLine()!;
 
-                if (IsValidFirstName(firstName))
+               if (IsValidFirstName(firstName))
                     return firstName;
 
                 Console.WriteLine("Some information is not correct");
@@ -141,7 +141,7 @@ namespace TaskManagement.Common
         {
             foreach (User user in DataContext.Users)
             {
-                if (User.Email == email)
+                if (user.Email == email)
                 {
                     Console.WriteLine("This email is already used in system, pls try another email");
                     return false;

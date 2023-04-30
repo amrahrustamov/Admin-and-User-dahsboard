@@ -8,7 +8,7 @@ namespace TaskManagement.Common
     {
         public static void Handle()
         {
-            UserValidator userValidator = new UserValidator();
+            UserValidator userValidator = new UserValidator();  ///instance
 
             string firstName = userValidator.GetAndValidateFirstName();
             string lastName  = userValidator.GetAndValidateLastName();
@@ -17,7 +17,6 @@ namespace TaskManagement.Common
 
             User human = new User(firstName, lastName, password, email);
             DataContext.Users.Add(human);
-            GetTime.GetTimes();
             Console.WriteLine("You have successfully registered");
         }
     }

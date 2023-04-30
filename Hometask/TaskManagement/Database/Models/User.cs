@@ -8,9 +8,10 @@
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
-        public static string ?Email { get; set; }
+        public string Email { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsDeactive { get; set; }
+        public DateTime CreatedAt { get; set; }
         public User(string name, string lastName, string password, string email, bool isAdmin = false, bool isDeactive = false)
         {
             Id = ++IdCounter;
@@ -20,6 +21,7 @@
             Email = email;
             IsAdmin = isAdmin;
             IsDeactive = isDeactive;
+            CreatedAt = DateTime.Now;
         }
         public string GetShortInfo()
         {
