@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
 using TaskManagement.Utilities;
 
 namespace TaskManagement.Common
@@ -14,13 +15,13 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                Console.WriteLine("Pls enter first name : ");
+                translateWords.AddName();
                 string firstName = Console.ReadLine()!;
 
                if (IsValidFirstName(firstName))
                     return firstName;
 
-                Console.WriteLine("Some information is not correct");
+                translateWords.SomeInfoIncorrect();
             }
         }
         private bool IsValidFirstName(string firstName)
@@ -37,13 +38,13 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                Console.WriteLine("Pls enter last name : ");
+                translateWords.AddLastName();
                 string lastName = Console.ReadLine()!;
 
                 if (IsValidLastName(lastName))
                     return lastName;
 
-                Console.WriteLine("Some information is not correnct");
+                translateWords.SomeInfoIncorrect();
             }
         }
         private bool IsValidLastName(string lastName)
@@ -61,16 +62,16 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                Console.WriteLine("Pls enter password : ");
+                translateWords.AddPassword();
                 string password = Console.ReadLine()!;
 
-                Console.WriteLine("Pls enter confirm password : ");
+                translateWords.AddRePassword();
                 string confirmPassword = Console.ReadLine()!;
 
                 if (password == confirmPassword)
                     return password;
 
-                Console.WriteLine("Some information is not correnct");
+                translateWords.SomeInfoIncorrect();
             }
         }
         #endregion
@@ -80,7 +81,7 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                Console.WriteLine("Pls enter email : ");
+                translateWords.AddEmail();
                 string email = Console.ReadLine()!;
 
                 if(CheckReceipent(email) == true && CheckEmailLength(email) == true && CheckSeparator(email) == true
@@ -96,7 +97,7 @@ namespace TaskManagement.Common
             Match match = regex.Match(email);
             if (match.Success)
                 return true;
-            Console.WriteLine("Incorrect input! In this app used only domain of code.edu.az");
+            translateWords.IncorrectDomain();
             return false;         
         }
         public bool CheckSeparator(string email) /// this is extra control of seperator
@@ -105,8 +106,8 @@ namespace TaskManagement.Common
             Regex regex = new Regex(seperatorPattern);
             Match match = regex.Match(email);
             if (match.Success)
-                return true; 
-                Console.WriteLine("Incorrect input! Must be one @ sign in your input");
+                return true;
+            translateWords.NeedAtSign();
             return false;
         }
         public bool CheckReceipent(string email)
@@ -117,7 +118,7 @@ namespace TaskManagement.Common
             Match match = regex.Match(email);
             if (!match.Success)
                 return true;
-            Console.WriteLine("Incorrect input! Only (min 1)letters and numbers(min1) are allowed");
+            translateWords.AllowLetterAndNumber();
             return false;
         }
         public bool CheckEmailLength(string email)
@@ -134,7 +135,7 @@ namespace TaskManagement.Common
                        ///control length
             if (i >= 10 && i <= 30)
                 return true;
-            Console.WriteLine("Incorrect input! Text length must be between min 10 and max 30 charachters");
+            translateWords.TextLengInfo();
             return false;
         }
         private bool IsEmailExists(string email)
@@ -143,7 +144,7 @@ namespace TaskManagement.Common
             {
                 if (user.Email == email)
                 {
-                    Console.WriteLine("This email is already used in system, pls try another email");
+                    translateWords.ExistEmailInfo();
                     return false;
                 }
             }
@@ -174,8 +175,8 @@ namespace TaskManagement.Common
         {
              while(true)
              {
-                  Console.WriteLine("Pls enter email : ");
-                  string email = Console.ReadLine()!;
+                translateWords.AddEmail();
+                string email = Console.ReadLine()!;
                   
                   if (IsEmailExists(email))
                    return email;

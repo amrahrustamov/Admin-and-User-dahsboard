@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Admin.Commands;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
 
 namespace TaskManagement.Admin
 {
@@ -11,22 +12,20 @@ namespace TaskManagement.Admin
 
             while (true)
             {
-                Console.WriteLine("");
-                Console.WriteLine("/show-users");
-                Console.WriteLine("/show-user-by-email");
-                Console.WriteLine("/show-user-by-id");
-                Console.WriteLine("/add-user");
-                Console.WriteLine("/promote-to-admin");
-                Console.WriteLine("/depromote-from-admin");
-                Console.WriteLine("/update-user-setting");
-                Console.WriteLine("/remove-user");
-                Console.WriteLine("/ban-user");
-                Console.WriteLine("/message-to");
-                Console.WriteLine("/check-blogs");
-                Console.WriteLine("/logout");
-                Console.WriteLine("");
+                translateWords.ShowUser();
+                translateWords.ShowUserByEmail();
+                translateWords.ShowUserById();
+                translateWords.AddUser();
+                translateWords.PromoteToAdmin();
+                translateWords.DepromoteToAdmin();
+                translateWords.UpdateUserSetting();
+                translateWords.RemoveUser();
+                translateWords.BanUser();
+                translateWords.SendMessageTo();
+                translateWords.CheckBlogs();
+                translateWords.Logout();
 
-                Console.Write("Add command : ");
+                translateWords.AddCommand();
                 string command = Console.ReadLine()!;
 
                 switch (command)
@@ -65,10 +64,10 @@ namespace TaskManagement.Admin
                         MessageToCommand.Handle();
                         break;
                     case "/logout":
-                        Console.WriteLine("Bye-bye");
+                        translateWords.ByeBye();
                         return;
                     default:
-                        Console.WriteLine("Invalid command, pls try again");
+                        translateWords.InvalidCommand();
                         break;
                 }
             }

@@ -2,6 +2,7 @@
 using TaskManagement.Client;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
 
 namespace TaskManagement.Common
 {
@@ -9,10 +10,9 @@ namespace TaskManagement.Common
     {
         public static void Handle() //use alias
         {
-            Console.WriteLine("");
-            Console.Write("Add email : ");
+            translateWords.AddEmail();
             string email = Console.ReadLine()!;
-            Console.Write("Add password : ");
+            translateWords.AddPassword();
             string password = Console.ReadLine()!;
 
             for (int i = 0; i < DataContext.Users.Count; i++)

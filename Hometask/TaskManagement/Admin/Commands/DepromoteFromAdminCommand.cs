@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -9,24 +10,24 @@ namespace TaskManagement.Admin.Commands
         {
             while (true)
             {
-                 Console.Write("Add email : ");
-                 string email = Console.ReadLine()!;
+                translateWords.AddEmail();
+                string email = Console.ReadLine()!;
 
                  foreach (User user in DataContext.Users)
                  {
                      if (user.Email == email && user.IsAdmin == true)
                      {
                          user.IsAdmin = false;
-                        Console.WriteLine("The owner of this email has become user");
+                        translateWords.BecomeUserInfo();
                         return;
                      }
                     if (user.Email == email && user.IsAdmin != true)
                     {
-                        Console.WriteLine("The owner of this email already is user");
+                        translateWords.IsUserInfo();
                     }
                  }
-                 Console.WriteLine("Email not found");
-                 return;
+                translateWords.EmailNotFound();
+                return;
             }
         }       
     }

@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -11,7 +12,7 @@ namespace TaskManagement.Admin.Commands
             {
                 try
                 {
-                    Console.WriteLine("Add email : ");
+                    translateWords.AddEmail();
                     string emailForSearch = Console.ReadLine()!;
 
                     foreach (User user in DataContext.Users)
@@ -22,11 +23,11 @@ namespace TaskManagement.Admin.Commands
                             return;
                         }
                     }
-                    Console.WriteLine("Email not found");
+                    translateWords.EmailNotFound();
                 }
                 catch 
                 {
-                    Console.WriteLine("Invalid input pls try again");
+                    translateWords.InvalidCommand();
                 }
             }
         }
