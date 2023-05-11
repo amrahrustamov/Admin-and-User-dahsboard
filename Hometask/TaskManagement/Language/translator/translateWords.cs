@@ -12,7 +12,6 @@ namespace TaskManagement.Language.translator
 {
     public class translateWords
     {
-
         public static void LangChoise()
         {
             string command = Console.ReadLine()!;
@@ -31,10 +30,10 @@ namespace TaskManagement.Language.translator
                         LocalizationService.Handle();
                         break;
                     case "/cixis":
-                        translateWords.ByeBye();
+                        ByeBye();
                         return;
                     default:
-                        translateWords.InvalidCommand();
+                        InvalidCommand();
                         break;
                 }
             }
@@ -52,10 +51,10 @@ namespace TaskManagement.Language.translator
                         LocalizationService.Handle();
                         break;
                     case "/выход":
-                        translateWords.ByeBye();
+                        ByeBye();
                         return;
                     default:
-                        translateWords.InvalidCommand();
+                        InvalidCommand();
                         break;
                 }
             }
@@ -73,20 +72,22 @@ namespace TaskManagement.Language.translator
                         LocalizationService.Handle();
                         break;
                     case "/exit":
-                        translateWords.ByeBye();
+                        ByeBye();
                         return;
                     default:
-                        translateWords.InvalidCommand();
+                        InvalidCommand();
                         break;
                 }
             }
         }
         public static void ShowMenu()
         {
-            translateWords.Register();
-            translateWords.Login();
-            translateWords.UpdateLanguage();
-            translateWords.Exit();
+            Console.WriteLine("");
+            Register();
+            Login();
+            UpdateLanguage();
+            Exit();
+            Console.WriteLine("");
         }
         public static void Common(string az, string ru, string en)
         {
@@ -96,7 +97,7 @@ namespace TaskManagement.Language.translator
                 Console.WriteLine(ru);
             if (Translate.Language == CurrentLanguage.En)
                 Console.WriteLine(en);
-        }     
+        }
         #region Main
         public static void AddCommand()
         {
@@ -105,7 +106,7 @@ namespace TaskManagement.Language.translator
             string en = "Add command";
             Common(az, ru, en);
         }
-        public static void Register()
+        public  static void Register()
         {
             string az = "/qeydiyyat";
             string ru = "/регистрация";
@@ -131,7 +132,7 @@ namespace TaskManagement.Language.translator
             string az = "/cixis";
             string ru = "/выход";
             string en = "/exit";
-            Common(az, ru, en);           
+            Common(az, ru, en);
         }
         public static void InvalidCommand()
         {
@@ -163,7 +164,7 @@ namespace TaskManagement.Language.translator
             string az = "Bəzi məlumatlar düzgün deyil";
             string ru = "Некоторая информация неверна";
             string en = "Some information is not correct";
-            Common(az, ru, en);          
+            Common(az, ru, en);
         }
         public static void AddLastName()
         {
@@ -190,7 +191,7 @@ namespace TaskManagement.Language.translator
         {
             string az = "Zəhmət olmasa e - poçtu daxil edin";
             string ru = "Пожалуйста, введите адрес электронной почты";
-            string en = " Pls enter email";
+            string en = "Pls enter email";
             Common(az, ru, en);
         }
         public static void IncorrectDomain()
@@ -198,7 +199,7 @@ namespace TaskManagement.Language.translator
             string az = "Yanlış daxiletmə! Bu proqramda yalnız code.edu.az domenindən istifadə olunur";
             string ru = "Неверный ввод! В этом приложении используется только домен code.edu.az";
             string en = "Incorrect input!In this app used only domain of code.edu.az";
-            Common(az, ru, en);            
+            Common(az, ru, en);
         }
         public static void NeedAtSign()
         {
@@ -238,12 +239,18 @@ namespace TaskManagement.Language.translator
         #endregion
 
         #region login
-
-        public static void AddNamre()
+        public static void HelloAdmin()
         {
-            string az = "Zəhmət olmasa ad daxil edin";
-            string ru = "Пожалуйста, введите имя";
-            string en = "Pls enter first name";
+            string az = "Salam admin";
+            string ru = "Привет админ";
+            string en = "Hello admin";
+            Common(az, ru, en);
+        }
+        public static void Hello()
+        {
+            string az = "Salam";
+            string ru = "Привет";
+            string en = "Hello";
             Common(az, ru, en);
         }
         public static void ShowUser()
@@ -316,6 +323,20 @@ namespace TaskManagement.Language.translator
             string en = "/message-to";
             Common(az, ru, en);
         }
+        public static void Messages()
+        {
+            string az = "/Mesajlar";
+            string ru = "/Сообщения";
+            string en = "/Messages";
+            Common(az, ru, en);
+        }
+        public static void AddBlog()
+        {
+            string az = "/Blog-elave-et";
+            string ru = "/Добавить блог";
+            string en = "/Add-Blog";
+            Common(az, ru, en);
+        }
         public static void CheckBlogs()
         {
             string az = "/blogları-yoxlayın";
@@ -365,20 +386,60 @@ namespace TaskManagement.Language.translator
             string en = "The owner of this email already is user";
             Common(az, ru, en);
         }
-
-
+        public static void CloseAccount()
+        {
+            string az = "/Hesabi-baglayin";
+            string ru = "/Закрыть аккаунт";
+            string en = "/CloseAccount";
+            Common(az, ru, en);
+        }
 
         //translateWords.IsUserInfo();
+        #endregion
+
+        #region Extra
+
+        //public static List<TranslationContainer> _translations = new List<TranslationContainer>
+        //{
+        //     new TranslationContainer("AddCommand","Komanda əlavə edin","Добавить команду","Add command"),
+        //     new TranslationContainer("Register","/qeydiyyat","/регистрация","/register"),
+        //     new TranslationContainer("Login","/giris","/вход","/login"),
+        //     new TranslationContainer("UpdateLanguage","/dil-secimlerinizi-yenileyin","/обновить-языковые-настройки","/update-language-preference"),
+        //     new TranslationContainer("Exit","/cixis","/выход","/exit"),
+        //     new TranslationContainer("InvalidCommand","Yanlis komanda, Yeniden daxil edin","Неверная команда, пожалуйста, попробуйте еще раз","Invalid command, pls try again"),
+        //     new TranslationContainer("ByeBye","helelik","пока","bye bye"),
+        //     new TranslationContainer("AddName","Zəhmət olmasa ad daxil edin","Пожалуйста, введите имя","Pls enter first name"),
+        //     new TranslationContainer("SomeInfoIncorrect","Bəzi məlumatlar düzgün deyil","Некоторая информация неверна","Some information is not correct"),
+        //     new TranslationContainer("AddLastName","Zəhmət olmasa soyadını daxil edin","Пожалуйста, введите фамилию","Pls enter last name"),
+        //     new TranslationContainer("AddPassword","Zəhmət olmasa parol daxil edin","Пожалуйста, введите пароль","Pls enter password"),
+        //     new TranslationContainer("AddRePassword","Zəhmət olmasa təsdiq parolunu daxil edin","Пожалуйста, введите пароль для подтверждения","Pls enter confirm password"),
+        //     new TranslationContainer("AddEmail","Zəhmət olmasa e - poçtu daxil edin","Пожалуйста, введите адрес электронной почты","Pls enter email"),
+        //     new TranslationContainer("IncorrectDomain","Yanlış daxiletmə! Bu proqramda yalnız code.edu.az domenindən istifadə olunur","Неверный ввод! В этом приложении используется только домен code.edu.az","Incorrect input!In this app used only domain of code.edu.az"),
+        //     new TranslationContainer("NeedAtSign","Yanlış daxiletmə! Girişinizdə bir @ işarəsi olmalıdır","Неверный ввод! В вашем вводе должен быть один знак @","Incorrect input! Must be one @ sign in your input"),
+        //     new TranslationContainer("AllowLetterAndNumber","Yanlış daxiletmə! Yalnız (min 1) hərf və rəqəmlərə (min1) icazə verilir","Неверный ввод! Разрешены только (мин. 1) буквы и цифры (мин. 1)","Incorrect input! Only (min 1)letters and numbers(min1) are allowed"),
+        //     new TranslationContainer("TextLengInfo","Yanlış daxiletmə! Mətnin uzunluğu minimum 10 ilə maksimum 30 simvol arasında olmalıdır","Неверный ввод! Длина текста должна быть от 10 до 30 символов","Incorrect input! Text length must be between min 10 and max 30 charachters"),
+        //     new TranslationContainer("ExistEmailInfo","Bu e-poçt artıq sistemdə istifadə olunur, lütfən, başqa e-poçtu yoxlayın","Этот адрес электронной почты уже используется в системе, попробуйте другой адрес электронной почты.","This email is already used in system, pls try another email"),
+        //     new TranslationContainer("SuccesRegistr","Siz uğurla qeydiyyatdan keçmisiniz","Вы успешно зарегистрировались","You have successfully registered"),
+        //     new TranslationContainer("ShowUser","/istifadəçiləri-göstərin","/показать-пользователей","/show-users"),
+        //     new TranslationContainer("ShowUserByEmail","/istifadəçini e-poçt vasitəsilə göstərin","/показать-пользователя-по-электронной-почте","/show-user-by-email"),
+        //     new TranslationContainer("ShowUserById","/istifadəçini-id-ilə-göstər","/показать пользователя по id","/show-user-by-id"),
+        //     new TranslationContainer("AddUser","/istifadeci-elave-edin","/Добавить-пользователя","/add-user"),
+        //     new TranslationContainer("PromoteToAdmin","/admin-edin","/повысить-до-администратора","/promote-to-admin"),
+        //     new TranslationContainer("DepromoteToAdmin","/adminlikden-cixar","/деактивировать-от-администратора","/depromote-from-admin"),
+        //     new TranslationContainer("UpdateUserSetting","/istifadəçi-parametrini-yenile","/обновить настройки пользователя","/update-user-setting"),
+        //     new TranslationContainer("RemoveUser","/istifadecini-silin","/удалить-пользователя","/remove-user"),
+        //     new TranslationContainer("BanUser","/istifadəçini-deaktiv-et","/забанить-пользователя","/ban-user"),
+        //     new TranslationContainer("SendMessageTo","/mesaj-göndərin","/Отправить сообщение","/message-to"),
+        //     new TranslationContainer("CheckBlogs","/blogları-yoxlayın","/проверить блоги","/check-blogs"),
+        //     new TranslationContainer("Logout","/cixis","/выйти","/logout"),
+        //     new TranslationContainer("EmailNotFound","E-poçt tapılmadı","Электронная почта не найдена","Email not found"),
+        //     new TranslationContainer("BecomeAdminInfo","Bu e-poçtun sahibi admin oldu","покаВладелец этого письма стал администратором","The owner of this email has become an admin"),
+        //     new TranslationContainer("IsAdminInfo","Bu e-poçtun sahibi artıq admindir","Владелец этого адреса электронной почты уже является администратором","The owner of this email is already admin"),
+        //     new TranslationContainer("BecomeUserInfo","Bu e-poçtun sahibi istifadəçi oldu","Владелец этого письма стал пользователем","The owner of this email has become user"),
+        //     new TranslationContainer("IsUserInfo","Bu e-poçtun sahibi artıq istifadəçidir","Владелец этого электронного письма уже является пользователем","The owner of this email already is user"),
+        //};
 
 
-
-
-
-
-
-
-
-    #endregion
-
-}
+        #endregion
+    }
 }

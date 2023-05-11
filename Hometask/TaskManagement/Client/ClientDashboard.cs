@@ -1,5 +1,8 @@
 ﻿using TaskManagement.Admin.Commands;
+using TaskManagement.Client.CommandOfClient;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Client
 {
@@ -7,37 +10,94 @@ namespace TaskManagement.Client
     {
         public static void Introduction(User user) 
         {
-            Console.WriteLine($"Hello! : {user.Name} {user.LastName}");
+            Console.WriteLine("**************************************************");
+            translateWords.HelloAdmin();
+            Console.WriteLine($" : {user.Name} {user.LastName}");
+            Console.WriteLine("");
 
             while (true)
             {
                 Console.WriteLine("");
-                Console.WriteLine("/update-settings");
-                Console.WriteLine("/close-account");
-                Console.WriteLine("/messages");
-                Console.WriteLine("/add-blog");
-                Console.WriteLine("");              
+                translateWords.UpdateUserSetting();
+                translateWords.CloseAccount();
+                translateWords.Messages();
+                translateWords.AddBlog();
+                Console.WriteLine("");
 
-                Console.Write("Add command : ");
+                translateWords.AddCommand();
                 string command = Console.ReadLine()!;
 
-                switch (command)
+                if (Translate.Language == CurrentLanguage.Az)
                 {
-                    case "/update-settings":
-                        AddUpdateSettingCommand.Handle(user);
-                        return;
-                    case "/close-account":
-                        RemoveUserByEmail.Handle();
-                        return;
-                    case "/messages":
-                        Messages.Handle(user.Email!);
-                        return;
-                    case "/add-blog":
-                        AddBlog.AddBlogs();
-                        return;
-                    default:
-                        Console.WriteLine("Invalid input, pls try again");
-                        break;
+                     switch (command)
+                     {
+                     case "/istifadəçi-parametrini-yenile":
+                         AddUpdateSettingCommand.Handle(user);
+                         return;
+                     case "/Hesabi-baglayin":
+                         RemoveUserByEmail.Handle();
+                         return;
+                     case "/Mesajlar":
+                         Messages.Handle(user.Email!);
+                         return;
+                     case "/Blog-elave-et":
+                         AddBlog.AddBlogs();
+                         return;
+                        case "/cixis":
+                            translateWords.ByeBye();
+                            return;
+                        default:
+                            translateWords.InvalidCommand();
+                            break;
+                     }
+                }
+                if (Translate.Language == CurrentLanguage.Ru)
+                {
+                    switch (command)
+                    {
+                        case "/обновить настройки пользователя":
+                            AddUpdateSettingCommand.Handle(user);
+                            return;
+                        case "/Закрыть аккаунт":
+                            RemoveUserByEmail.Handle();
+                            return;
+                        case "/Сообщения":
+                            Messages.Handle(user.Email!);
+                            return;
+                        case "/Добавить блог":
+                            AddBlog.AddBlogs();
+                            return;
+                        case "/выйти":
+                            translateWords.ByeBye();
+                            return;
+                        default:
+                            translateWords.InvalidCommand();                           
+                            break;
+                    }
+                }
+                if (Translate.Language == CurrentLanguage.En)
+                {
+                    switch (command)
+                    {
+                        case "/update-settings":
+                            AddUpdateSettingCommand.Handle(user);
+                            return;
+                        case "/close-account":
+                            RemoveUserByEmail.Handle();
+                            return;
+                        case "/messages":
+                            Messages.Handle(user.Email!);
+                            return;
+                        case "/add-blog":
+                            AddBlog.AddBlogs();
+                            return;
+                        case "/exit":
+                            translateWords.ByeBye();
+                            return;
+                        default:
+                            translateWords.InvalidCommand();
+                            break;
+                    }
                 }
             }
         }

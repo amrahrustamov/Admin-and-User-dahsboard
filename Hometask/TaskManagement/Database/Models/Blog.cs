@@ -9,23 +9,33 @@ namespace TaskManagement.Database.Models
 {
     public class Blog
     {
+
         public static int IdCounter { get; private set; }
 
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public string Title_Az { get; set; }
+        public string Title_Ru { get; set; }
+        public string Title_En { get; set; }
+        public string Content_Az { get; set; }
+        public string Content_Ru { get; set; }
+        public string Content_En { get; set; }
         public User Owner { get; set; }
         public DateTime CreatedAt { get; set; }
         public BlogStatus Status { get; set; }
 
-        public Blog(string title, string content, User owner, BlogStatus status)
+        public Blog(string title_Az, string title_Ru, string title_En,
+            string content_Az, string content_Ru, string content_En, User owner, DateTime createdAt, BlogStatus status)
         {
-            Id = ++IdCounter;
-            Title = title;
-            Content = content;
+            Title_Az = title_Az;
+            Title_Ru = title_Ru;
+            Title_En = title_En;
+            Content_Az = content_Az;
+            Content_Ru = content_Ru;
+            Content_En = content_En;
             Owner = owner;
-            CreatedAt = DateTime.Now;
+            CreatedAt = createdAt;
             Status = status;
         }
+        
     }
 }

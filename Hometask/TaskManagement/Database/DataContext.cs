@@ -21,7 +21,8 @@ namespace TaskManagement.Database
         }
         private static void AddUserSeeedings()
         {
-            Users.Add(new User("Amrah", "Rustamov", "Bjk039423", "amrahrustamov94@code.edu.az", true, false));
+            Users.Add(new User("Amrah", "Rustamov", "start123", "amrahrustamov94@code.edu.az", true, false));
+            Users.Add(new User("Hilal", "Aliyev", "Hilal1994", "hilalaliyev94@code.edu.az", false, false));
         }
     }
 }

@@ -17,6 +17,7 @@ namespace TaskManagement.Common
 
             for (int i = 0; i < DataContext.Users.Count; i++)
             {
+
                 User user = DataContext.Users[i];
 
                 if (user.Email == email && user.Password == password && user.IsDeactive == false)
