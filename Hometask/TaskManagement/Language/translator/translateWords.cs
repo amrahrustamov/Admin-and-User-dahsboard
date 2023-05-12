@@ -164,6 +164,48 @@ namespace TaskManagement.Language.translator
             string en = "bye bye";
             Common(az, ru, en);
         }
+        public static void AddBlogNameAze()
+        {
+            string az = "Azərbaycan dilində blogun başlığını əlavə et : ";
+            string ru = "Добавить название блога на азербайджанском языке : ";
+            string en = "Add blog title in Azerbaijani : ";
+            Common(az, ru, en);
+        }
+        public static void AddBlogNameRus()
+        {
+            string az = "Rus dilində blog başlığını əlavə et : ";
+            string ru = "Добавить название блога на русском языке : ";
+            string en = "Add blog title in Russian : ";
+            Common(az, ru, en);
+        }
+        public static void AddBlogNameEng()
+        {
+            string az = "İngilis dilində blog başlığını əlavə et : ";
+            string ru = "Добавить название блога на английском языке : ";
+            string en = "Add blog title in English : ";
+            Common(az, ru, en);
+        }
+        public static void AddBlogAze()
+        {
+            string az = "Azərbaycan dilində blog məzmunu əlavə edin : ";
+            string ru = "Добавить содержимое блога на азербайджанском языке : ";
+            string en = "Add blog content in Azerbaijani : ";
+            Common(az, ru, en);
+        }
+        public static void AddBlogRus()
+        {
+            string az = "Rus dilində blog məzmunu əlavə edin : ";
+            string ru = "Добавить контент блога на русском языке : ";
+            string en = "Add blog content in Russian : ";
+            Common(az, ru, en);
+        }
+        public static void AddBlogEng()
+        {
+            string az = "İngilis dilində blog məzmunu əlavə edin : ";
+            string ru = "Добавить контент блога на английском языке : ";
+            string en = "Add blog content in English : ";
+            Common(az, ru, en);
+        }
         #endregion
 
         #region register

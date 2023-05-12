@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using TaskManagement.Common;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 using TaskManagement.Services;
 
 namespace TaskManagement.Client.CommandOfClient
@@ -15,18 +17,18 @@ namespace TaskManagement.Client.CommandOfClient
     {
         public static void Handle()
         {
-            Console.Write("Add blog title in Azerbaijani : ");
+            translateWords.AddBlogNameAze();
             string title_Az = Console.ReadLine()!;
-            Console.Write("Add blog title in Russian : ");
+            translateWords.AddBlogNameRus();
             string title_Ru = Console.ReadLine()!;
-            Console.Write("Add blog title in English : ");
+            translateWords.AddBlogNameEng();
             string title_En = Console.ReadLine()!;
 
-            Console.Write("Add blog content in Azerbaijani : ");
+            translateWords.AddBlogAze();
             string content_Az = Console.ReadLine()!;
-            Console.Write("Add blog content in Russian : ");
+            translateWords.AddBlogRus();
             string content_Ru = Console.ReadLine()!;
-            Console.Write("Add blog content in English : ");
+            translateWords.AddBlogEng();
             string content_En = Console.ReadLine()!;
 
             string code = RandomCode();
@@ -47,6 +49,6 @@ namespace TaskManagement.Client.CommandOfClient
                    RandomCode();
             }
             return code;
-        }      
+        }
     }
 }
