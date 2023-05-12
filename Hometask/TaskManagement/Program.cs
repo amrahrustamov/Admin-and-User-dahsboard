@@ -1,12 +1,5 @@
-﻿using TaskManagement.Common;
-using TaskManagement.Database;
-using TaskManagement.LanguageSystem;
-using TaskManagement.Language.translator;
+﻿using TaskManagement.Language.translator;
 using System.Text;
-using TaskManagement.Database.Models;
-using System.Security.Cryptography;
-using Newtonsoft.Json;
-using System.Collections;
 using TaskManagement.Database.DataJson;
 
 namespace TaskManagement
@@ -22,10 +15,16 @@ namespace TaskManagement
             Console.InputEncoding = Encoding.UTF8;   ////
 
             translateWords translateWords = new translateWords();
-             
+             while(true)
+            {
                 translateWords.ShowMenu();
                 translateWords.AddCommand();
-                translateWords.LangChoise();                
+                string command = Console.ReadLine()!;
+                translateWords.LangChoise(command);
+
+                if (command == "/cixis" || command == "/выход" || command == "/exit")
+                    break;
+            }
         }
     }
 }

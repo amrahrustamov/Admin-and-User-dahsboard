@@ -13,6 +13,7 @@ namespace TaskManagement.Database.Models
         public static int IdCounter { get; private set; }
 
         public int Id { get; set; }
+        public string Code { get; set; }
         public string Title_Az { get; set; }
         public string Title_Ru { get; set; }
         public string Title_En { get; set; }
@@ -22,10 +23,12 @@ namespace TaskManagement.Database.Models
         public User Owner { get; set; }
         public DateTime CreatedAt { get; set; }
         public BlogStatus Status { get; set; }
+       
 
-        public Blog(string title_Az, string title_Ru, string title_En,
+        public Blog(string code, string title_Az, string title_Ru, string title_En,
             string content_Az, string content_Ru, string content_En, User owner, DateTime createdAt, BlogStatus status)
         {
+            Code = code;
             Title_Az = title_Az;
             Title_Ru = title_Ru;
             Title_En = title_En;
@@ -35,6 +38,7 @@ namespace TaskManagement.Database.Models
             Owner = owner;
             CreatedAt = createdAt;
             Status = status;
+            
         }
         
     }

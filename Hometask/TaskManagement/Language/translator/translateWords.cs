@@ -12,10 +12,9 @@ namespace TaskManagement.Language.translator
 {
     public class translateWords
     {
-        public static void LangChoise()
+        public static void LangChoise(string command)
         {
-            string command = Console.ReadLine()!;
-
+            
             if (Translate.Language == CurrentLanguage.Az)
             {
                 switch (command)
@@ -25,6 +24,9 @@ namespace TaskManagement.Language.translator
                         break;
                     case "/giris":
                         LoginCommand.Handle();
+                        break;
+                    case "/şərhlərlə-bloqları-göstər":
+                        BlogAndComment.Handle();
                         break;
                     case "/dil-secimlerinizi-yenileyin":
                         LocalizationService.Handle();
@@ -47,6 +49,9 @@ namespace TaskManagement.Language.translator
                     case "/вход":
                         LoginCommand.Handle();
                         break;
+                    case "/показать-блоги-с-комментариями":
+                        BlogAndComment.Handle();
+                        break;
                     case "/обновить-языковые-настройки":
                         LocalizationService.Handle();
                         break;
@@ -68,6 +73,9 @@ namespace TaskManagement.Language.translator
                     case "/login":
                         LoginCommand.Handle();
                         break;
+                    case "/show-blogs-with-comments":
+                        BlogAndComment.Handle();
+                        break;
                     case "/update-language-preference":
                         LocalizationService.Handle();
                         break;
@@ -85,6 +93,7 @@ namespace TaskManagement.Language.translator
             Console.WriteLine("");
             Register();
             Login();
+            ShowBlogsWithComments();
             UpdateLanguage();
             Exit();
             Console.WriteLine("");
@@ -118,6 +127,13 @@ namespace TaskManagement.Language.translator
             string az = "/giris";
             string ru = "/вход";
             string en = "/login";
+            Common(az, ru, en);
+        }
+        public static void ShowBlogsWithComments()
+        {
+            string az = "/şərhlərlə-bloqları-göstər";
+            string ru = "/показать-блоги-с-комментариями";
+            string en = "/show-blogs-with-comments";
             Common(az, ru, en);
         }
         public static void UpdateLanguage()

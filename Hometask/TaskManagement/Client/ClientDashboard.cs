@@ -41,7 +41,7 @@ namespace TaskManagement.Client
                          Messages.Handle(user.Email!);
                          return;
                      case "/Blog-elave-et":
-                         AddBlog.AddBlogs();
+                         AddBlog.Handle();
                          return;
                         case "/cixis":
                             translateWords.ByeBye();
@@ -65,7 +65,7 @@ namespace TaskManagement.Client
                             Messages.Handle(user.Email!);
                             return;
                         case "/Добавить блог":
-                            AddBlog.AddBlogs();
+                            AddBlog.Handle();
                             return;
                         case "/выйти":
                             translateWords.ByeBye();
@@ -89,7 +89,7 @@ namespace TaskManagement.Client
                             Messages.Handle(user.Email!);
                             return;
                         case "/add-blog":
-                            AddBlog.AddBlogs();
+                            AddBlog.Handle();
                             return;
                         case "/exit":
                             translateWords.ByeBye();

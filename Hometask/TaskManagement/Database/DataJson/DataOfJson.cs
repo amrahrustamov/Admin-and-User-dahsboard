@@ -1,12 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using TaskManagement.Common;
 using TaskManagement.Database.Models;
 
 namespace TaskManagement.Database.DataJson
