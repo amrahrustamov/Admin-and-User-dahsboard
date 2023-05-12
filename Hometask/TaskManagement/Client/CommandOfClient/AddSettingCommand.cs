@@ -1,6 +1,7 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Common;
+using TaskManagement.Database.DataJson;
 
 namespace TaskManagement.Client.CommandOfClient
 {
@@ -17,6 +18,7 @@ namespace TaskManagement.Client.CommandOfClient
             user.Name = firstName;
             user.LastName = lastName;
             user.Password = password;
+            DataOfJson.JSonDocRamToFile();
         }
     }
 }

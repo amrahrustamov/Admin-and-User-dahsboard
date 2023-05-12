@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Database.Models;
 using TaskManagement.Database;
+using TaskManagement.Database.DataJson;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -21,6 +22,7 @@ namespace TaskManagement.Admin.Commands
                         return;
                     }
                     user.IsDeactive = true;
+                    DataOfJson.JSonDocRamToFile();
                     return;
                 }
             }

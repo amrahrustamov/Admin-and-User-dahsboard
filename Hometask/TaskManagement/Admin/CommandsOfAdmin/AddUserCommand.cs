@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Common;
 using TaskManagement.Database;
+using TaskManagement.Database.DataJson;
 using TaskManagement.Database.Models;
 
 namespace TaskManagement.Admin.Commands
@@ -18,6 +19,7 @@ namespace TaskManagement.Admin.Commands
             User human = new User(firstName, lastName, password, email);
 
             DataContext.Users.Add(human);
+            DataOfJson.JSonDocRamToFile();
         }
     }
 }

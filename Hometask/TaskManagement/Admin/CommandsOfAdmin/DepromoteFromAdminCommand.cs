@@ -1,4 +1,5 @@
 ﻿using TaskManagement.Database;
+using TaskManagement.Database.DataJson;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
 
@@ -19,6 +20,7 @@ namespace TaskManagement.Admin.Commands
                      {
                          user.IsAdmin = false;
                         translateWords.BecomeUserInfo();
+                        DataOfJson.JSonDocRamToFile();
                         return;
                      }
                     if (user.Email == email && user.IsAdmin != true)

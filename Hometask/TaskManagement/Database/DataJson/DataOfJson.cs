@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -12,12 +13,17 @@ namespace TaskManagement.Database.DataJson
 {
     public class DataOfJson
     {
-        public static void JSon(User human)
+        public static void JSonDocRamToFile()
         {
-            string pathName = @"C:\DataOfCSharp\myFile.txt";
-
-            //File.WriteAllText(pathName, JsonSerializer.Serialize(human));
-            File.WriteAllText(pathName, JsonSerializer.Serialize(DataContext.Users));
+            var pathName = @"C:\DataOfCSharp\myFile.txt";           
+            File.WriteAllText(pathName, System.Text.Json.JsonSerializer.Serialize(DataContext.Users));                  
+        }
+        public static void JsonDocFileToRam()
+        {
+            var pathName = @"C:\DataOfCSharp\myFile.txt";
+            var readText = File.ReadAllText(pathName);
+            var output = JsonConvert.DeserializeObject<List<User>>(readText);
+            DataContext.Users = output!;
         }
     }
 }

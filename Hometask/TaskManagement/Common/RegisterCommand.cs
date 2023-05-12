@@ -11,8 +11,7 @@ namespace TaskManagement.Common
     public class RegisterCommand
     {
         public static void Handle()
-        {
-            
+        {            
 
             UserValidator userValidator = new UserValidator();  ///instance
 
@@ -24,6 +23,7 @@ namespace TaskManagement.Common
             Console.WriteLine("");
             User human = new User(firstName, lastName, password, email);
             DataContext.Users.Add(human);
+            DataOfJson.JSonDocRamToFile(); //for adding data from Ram to SSD
             translateWords.SuccesRegistr();
         }
     }

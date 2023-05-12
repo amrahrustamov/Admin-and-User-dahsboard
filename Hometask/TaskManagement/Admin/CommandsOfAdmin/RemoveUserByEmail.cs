@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Database.Models;
 using TaskManagement.Database;
+using TaskManagement.Database.DataJson;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -22,7 +23,8 @@ namespace TaskManagement.Admin.Commands
                     else
                     {
                         Console.WriteLine("");
-                        DataContext.Users.Remove(user);                     
+                        DataContext.Users.Remove(user);
+                        DataOfJson.JSonDocRamToFile();
                     }
                     return;
                 }
