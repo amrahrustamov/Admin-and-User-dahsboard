@@ -2,6 +2,10 @@
 using TaskManagement.Language.translator;
 using TaskManagement.Database;
 using System.Reflection.Metadata;
+using static System.Net.Mime.MediaTypeNames;
+using System.Linq;
+using TaskManagement.Common;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TaskManagement.Client.CommandOfClient
 {
@@ -12,19 +16,29 @@ namespace TaskManagement.Client.CommandOfClient
             while(true)
             {
                 translateWords.AddCodeOfBlog();
-                string commandCode = Console.ReadLine()!;
+                string AddCode = Console.ReadLine()!;
                 translateWords.AddCommentTextToBlog();
                 string addComment = Console.ReadLine()!;
+              
+                UserValidator userValidator = new UserValidator();
 
-                foreach (Blog blogout in DataContext.Blogs)
-                    if (blogout.Code == commandCode)
-                    {
-                        Comments comments = new Comments(addComment, commandCode, user, DateTime.Now);
+                 CheckCode(AddCode);
+                            
+                if(userValidator.CheckCommentContains(addComment) && userValidator.CheckCommentLength(addComment))
+                {
+                        Comments comments = new Comments(addComment, AddCode, user, DateTime.Now);
                         DataContext.Comments.Add(comments);
-                        return;
-                    }
+                }
             }
-
+        }
+        public static bool CheckCode(string commandCode)
+        {
+            foreach (Blog item in DataContext.Blogs)
+            {
+                if (item.Code == commandCode)
+                    return true;
+            }
+            return false;
         }
     }
 }

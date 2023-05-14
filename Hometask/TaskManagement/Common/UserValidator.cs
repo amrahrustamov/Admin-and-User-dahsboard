@@ -208,5 +208,28 @@ namespace TaskManagement.Common
             return true;
         }
         #endregion
+
+        #region Comments
+
+        public bool CheckCommentLength(string addComment)
+        {
+            if (addComment.Length > 1 && addComment.Length < 30)
+                return true;
+
+            return false;
+        }
+        public bool CheckCommentContains(string addComment)
+        {
+            string[] prohibitedWords = { "Essek", "essek", "Qoyun", "qoyun", "Alcaq", "alcaq", "Eclaf", "eclaf" }; //Some examples for prohibited words
+
+            for (int i = 0; i < prohibitedWords.Length; i++)
+            {
+                if (addComment.Contains(prohibitedWords[i]))
+                    return false;
+            }
+            return true;
+        }
+
+        #endregion
     }
 }
