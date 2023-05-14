@@ -29,12 +29,13 @@ namespace TaskManagement.Client.CommandOfClient
                     Comments comments = new Comments(addComment, AddCode, user, DateTime.Now);
                     DataContext.Comments.Add(comments);
                     translateWords.SuccesAddComment();
+                    SendNoticeMessage(user, AddCode);
                     return;
                 }
                 translateWords.UnsuccesCommentNotice();
             }
         }
-        public static bool CheckCode(string commandCode)
+        public static bool CheckCode(string AddCode)
         {
             foreach (Blog item in DataContext.Blogs)
             {
@@ -43,6 +44,25 @@ namespace TaskManagement.Client.CommandOfClient
             }
             translateWords.NotFoundBlogByCode();
             return false;
+        }
+        public static void SendNoticeMessage(User user,string AddCode)
+        {
+            UserValidator userValidator = new UserValidator();
+
+            string sender = user.Name + user.LastName + user.Email;
+            string recipient;
+            string message = $"<{AddCode}> kodlu vlogunuza <{user.Name}> <{user.LastName}> terefinden rey elave olundu.";
+
+            foreach (Blog item in DataContext.Blogs)
+            {
+                if (item.Code == AddCode)
+                {
+                    recipient = item.Owner.Email;
+                    Inbox inbox = new Inbox(sender, recipient, message);
+                    DataContext.Messages.Add(inbox);
+                    return;
+                }
+            }
         }
     }
 }

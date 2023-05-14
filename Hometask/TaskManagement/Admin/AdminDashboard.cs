@@ -71,7 +71,7 @@ namespace TaskManagement.Admin
                            CheckBlogsCommand.Handle();
                            break;
                        case "/mesaj-gonderin":
-                           MessageToCommand.Handle();
+                           MessageToCommand.Handle(user);
                            break;
                        case "/cixis":
                            translateWords.ByeBye();

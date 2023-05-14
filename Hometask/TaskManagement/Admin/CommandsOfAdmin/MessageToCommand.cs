@@ -1,18 +1,16 @@
 ﻿using TaskManagement.Common;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
-using TaskManagement.Services;
 
 namespace TaskManagement.Admin.Commands
 {
     public class MessageToCommand
     {
-        public static void Handle()
-        {
-            
+        public static void Handle(User user)
+        {           
             UserValidator userValidator = new UserValidator();
 
-            string sender = UserServices.CurrentUser.Email;
+            string sender = user.Email;
             string recipient = userValidator.SendMessageByEmail();
             string message = userValidator.CheckMessage();
 
