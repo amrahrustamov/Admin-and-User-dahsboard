@@ -9,7 +9,7 @@ namespace TaskManagement
     {
         static void Main(string[] args)
         {
-            DataOfJson.JsonDocFileToRam();
+            DataOfJson.JsonUserDocFileToRam();
 
             Console.OutputEncoding = Encoding.UTF8; ////Dilleri desteklemek ucun
             Console.InputEncoding = Encoding.UTF8;   ////

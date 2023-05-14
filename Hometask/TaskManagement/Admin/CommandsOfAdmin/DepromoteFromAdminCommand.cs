@@ -20,7 +20,7 @@ namespace TaskManagement.Admin.Commands
                      {
                          user.IsAdmin = false;
                         translateWords.BecomeUserInfo();
-                        DataOfJson.JSonDocRamToFile();
+                        DataOfJson.JSonUserDocRamToFile();
                         return;
                      }
                     if (user.Email == email && user.IsAdmin != true)

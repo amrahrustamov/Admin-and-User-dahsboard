@@ -116,7 +116,7 @@ namespace TaskManagement.Admin
                             CheckBlogsCommand.Handle();
                             break;
                         case "/Отправить сообщение":
-                            MessageToCommand.Handle();
+                            MessageToCommand.Handle(user);
                             break;
                         case "/выйти":
                             translateWords.ByeBye();
@@ -161,7 +161,7 @@ namespace TaskManagement.Admin
                             CheckBlogsCommand.Handle();
                             break;
                         case "/message-to":
-                            MessageToCommand.Handle();
+                            MessageToCommand.Handle(user);
                             break;
                         case "/logout":
                             translateWords.ByeBye();

@@ -20,7 +20,7 @@ namespace TaskManagement.Common
             Console.WriteLine("");
             User human = new User(firstName, lastName, password, email);
             DataContext.Users.Add(human);
-            DataOfJson.JSonDocRamToFile(); //for adding data from Ram to SSD
+            DataOfJson.JSonUserDocRamToFile(); //for adding data from Ram to SSD
             translateWords.SuccesRegistr();
         }
     }

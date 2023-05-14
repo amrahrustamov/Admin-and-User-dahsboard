@@ -24,7 +24,7 @@ namespace TaskManagement.Admin.Commands
                     {
                         Console.WriteLine("");
                         DataContext.Users.Remove(user);
-                        DataOfJson.JSonDocRamToFile();
+                        DataOfJson.JSonUserDocRamToFile();
                     }
                     return;
                 }

@@ -19,7 +19,7 @@ namespace TaskManagement.Admin.Commands
             User human = new User(firstName, lastName, password, email);
 
             DataContext.Users.Add(human);
-            DataOfJson.JSonDocRamToFile();
+            DataOfJson.JSonUserDocRamToFile();
         }
     }
 }

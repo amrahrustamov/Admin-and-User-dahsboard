@@ -22,7 +22,7 @@ namespace TaskManagement.Admin.Commands
                         return;
                     }
                     user.IsDeactive = true;
-                    DataOfJson.JSonDocRamToFile();
+                    DataOfJson.JSonUserDocRamToFile();
                     return;
                 }
             }

@@ -18,7 +18,7 @@ namespace TaskManagement.Client.CommandOfClient
             user.Name = firstName;
             user.LastName = lastName;
             user.Password = password;
-            DataOfJson.JSonDocRamToFile();
+            DataOfJson.JSonUserDocRamToFile();
         }
     }
 }
