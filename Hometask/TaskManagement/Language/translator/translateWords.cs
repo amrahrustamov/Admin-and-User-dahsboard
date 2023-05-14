@@ -480,8 +480,28 @@ namespace TaskManagement.Language.translator
             string en = "Add text : ";
             Common(az, ru, en);
         }
+        public static void SuccesAddComment()
+        {
+            string az = "Şərh uğurla əlavə edildi";
+            string ru = "Комментарий успешно добавлен";
+            string en = "Comment successfully added";
+            Common(az, ru, en);
+        }
+        public static void NotFoundBlogByCode()
+        {
+            string az = "Bu kodda heç bir vlog tapılmadı";
+            string ru = "В этом коде видеоблог не найден";
+            string en = "No vlog found in this code";
+            Common(az, ru, en);
+        }
+        public static void UnsuccesCommentNotice()
+        {
+            string az = "Mətnin uzunluğu 1 ilə 30 arasında olmalıdır və mətndə təhqiredici sözlərdən istifadə edilməməlidir.";
+            string ru = "Длина текста должна быть от 1 до 30, в тексте не должно быть оскорбительных слов";
+            string en = "The length of the text must be between 1 and 30 and the text must not use offensive words";
+            Common(az, ru, en);
+        }
 
-        //translateWords.IsUserInfo();
         #endregion
 
         #region Extra

@@ -26,9 +26,12 @@ namespace TaskManagement.Client.CommandOfClient
                             
                 if(userValidator.CheckCommentContains(addComment) && userValidator.CheckCommentLength(addComment))
                 {
-                        Comments comments = new Comments(addComment, AddCode, user, DateTime.Now);
-                        DataContext.Comments.Add(comments);
+                    Comments comments = new Comments(addComment, AddCode, user, DateTime.Now);
+                    DataContext.Comments.Add(comments);
+                    translateWords.SuccesAddComment();
+                    return;
                 }
+                translateWords.UnsuccesCommentNotice();
             }
         }
         public static bool CheckCode(string commandCode)
@@ -38,6 +41,7 @@ namespace TaskManagement.Client.CommandOfClient
                 if (item.Code == commandCode)
                     return true;
             }
+            translateWords.NotFoundBlogByCode();
             return false;
         }
     }
