@@ -22,6 +22,7 @@ namespace TaskManagement.Client
                 translateWords.CloseAccount();
                 translateWords.Messages();
                 translateWords.AddBlog();
+                translateWords.AddComments();
                 Console.WriteLine("");
 
                 translateWords.AddCommand();
@@ -31,18 +32,21 @@ namespace TaskManagement.Client
                 {
                      switch (command)
                      {
-                     case "/istifadəçi-parametrini-yenile":
-                         AddUpdateSettingCommand.Handle(user);
-                         return;
-                     case "/Hesabi-baglayin":
-                         RemoveUserByEmail.Handle();
-                         return;
-                     case "/Mesajlar":
-                         Messages.Handle(user.Email!);
-                         return;
-                     case "/Blog-elave-et":
-                         AddBlog.Handle();
-                         return;
+                        case "/istifadəçi-parametrini-yenile":
+                            AddUpdateSettingCommand.Handle(user);
+                            return;
+                        case "/Hesabi-baglayin":
+                            RemoveUserByEmail.Handle();
+                            return;
+                        case "/Mesajlar":
+                            Messages.Handle(user.Email!);
+                            return;
+                        case "/Blog-elave-et":
+                            AddBlog.Handle();
+                            return;
+                        case "/add-comment":
+                            CommentToBlog.Handle();
+                            return;
                         case "/cixis":
                             translateWords.ByeBye();
                             return;

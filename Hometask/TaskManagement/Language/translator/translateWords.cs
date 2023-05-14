@@ -107,6 +107,7 @@ namespace TaskManagement.Language.translator
             if (Translate.Language == CurrentLanguage.En)
                 Console.WriteLine(en);
         }
+
         #region Main
         public static void AddCommand()
         {
@@ -449,6 +450,27 @@ namespace TaskManagement.Language.translator
             string az = "/Hesabi-baglayin";
             string ru = "/Закрыть аккаунт";
             string en = "/CloseAccount";
+            Common(az, ru, en);
+        }
+        public static void AddComments()
+        {
+            string az = "/şərh əlavə et";
+            string ru = "/добавить комментарий";
+            string en = "/add-comment";
+            Common(az, ru, en);
+        }
+        public static void AddCodeOfBlog()
+        {
+            string az = "Blogun kodunu daxil edin : ";
+            string ru = "Введите код блога : ";
+            string en = "Enter the blog code : ";
+            Common(az, ru, en);
+        }
+        public static void AddCommentTextToBlog()
+        {
+            string az = "Mətn əlavə edin : ";
+            string ru = "Добавить текст : ";
+            string en = "Add text : ";
             Common(az, ru, en);
         }
 

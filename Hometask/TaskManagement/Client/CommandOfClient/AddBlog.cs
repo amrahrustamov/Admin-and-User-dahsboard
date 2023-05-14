@@ -37,8 +37,9 @@ namespace TaskManagement.Client.CommandOfClient
             DataContext.Blogs.Add(blog);
         }
         public static string RandomCode()
-        {  
-            Random rnd = new Random(); //Random kod yaradildi
+        {
+            //Blog-a random kod teyin etmek ucun
+            Random rnd = new Random();
 
             int testCode = rnd.Next(10000, 100000);
             string code = $"BL{testCode}";
