@@ -1,11 +1,7 @@
 ﻿using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
 using TaskManagement.Database;
-using System.Reflection.Metadata;
-using static System.Net.Mime.MediaTypeNames;
-using System.Linq;
 using TaskManagement.Common;
-using System.Security.Cryptography.X509Certificates;
 
 namespace TaskManagement.Client.CommandOfClient
 {
@@ -39,7 +35,7 @@ namespace TaskManagement.Client.CommandOfClient
         {
             foreach (Blog item in DataContext.Blogs)
             {
-                if (item.Code == commandCode)
+                if (item.Code == AddCode)
                     return true;
             }
             translateWords.NotFoundBlogByCode();
