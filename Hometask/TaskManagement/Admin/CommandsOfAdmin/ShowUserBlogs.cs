@@ -19,7 +19,7 @@ namespace TaskManagement.Admin.Commands
                 if(blog.Status == BlogStatus.Created)
                 {
                     Type t = typeof(Blog);
-                    Console.WriteLine($"Blog ID : {blog.Id} | Blog status: {blog.Status} | Blog time of create : {DateTime.Now}");
+                    Console.WriteLine($"Blog ID : {blog.Id} | Blog status: {blog.Status} | Blog time of create : {blog.CreatedAt}");
                     Console.Write("Blog name : ");
                     Console.WriteLine(LangCurrentTitle(blog));
                     Console.Write("Blog : ");

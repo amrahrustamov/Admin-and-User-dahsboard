@@ -26,7 +26,7 @@ namespace TaskManagement.Database.Models
        
 
         public Blog(string code, string title_Az, string title_Ru, string title_En,
-            string content_Az, string content_Ru, string content_En, User owner, DateTime createdAt, BlogStatus status)
+            string content_Az, string content_Ru, string content_En, User owner, BlogStatus status)
         {
             Code = code;
             Title_Az = title_Az;
@@ -36,7 +36,7 @@ namespace TaskManagement.Database.Models
             Content_Ru = content_Ru;
             Content_En = content_En;
             Owner = owner;
-            CreatedAt = createdAt;
+            CreatedAt = DateTime.Now;
             Status = status;
 
 
