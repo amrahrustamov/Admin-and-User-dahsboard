@@ -47,8 +47,6 @@ namespace TaskManagement.Client.CommandOfClient
         }
         public static void SendNoticeMessage(User user,string AddCode)
         {
-            UserValidator userValidator = new UserValidator();
-
             string sender = user.Name + user.LastName + user.Email;
             string recipient;
             string message = $"<{AddCode}> kodlu vlogunuza <{user.Name}> <{user.LastName}> terefinden rey elave olundu.";
