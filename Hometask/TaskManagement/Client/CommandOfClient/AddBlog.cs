@@ -8,14 +8,12 @@ using TaskManagement.Common;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
-using TaskManagement.LanguageSystem;
-using TaskManagement.Services;
 
 namespace TaskManagement.Client.CommandOfClient
 {
     public class AddBlog
     {
-        public static void Handle()
+        public static void Handle(User user)
         {
             translateWords.AddBlogNameAze();
             string title_Az = Console.ReadLine()!;
@@ -33,8 +31,9 @@ namespace TaskManagement.Client.CommandOfClient
 
             string code = RandomCode();
 
-            Blog blog = new Blog(code, title_Az, title_Ru, title_En, content_Az, content_Ru, content_En, UserServices.CurrentUser, DateTime.Now, BlogStatus.Created);
+            Blog blog = new Blog(code, title_Az, title_Ru, title_En, content_Az, content_Ru, content_En, user, DateTime.Now, BlogStatus.Created);
             DataContext.Blogs.Add(blog);
+            translateWords.NoticeBlogCreated();
         }
         public static string RandomCode()
         {

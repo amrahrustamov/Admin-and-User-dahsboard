@@ -32,7 +32,7 @@ namespace TaskManagement.Client
                 {
                      switch (command)
                      {
-                        case "/istifadəçi-parametrini-yenile":
+                        case "/istifadeci-parametrini-yenile":
                             AddUpdateSettingCommand.Handle(user);
                             return;
                         case "/Hesabi-baglayin":
@@ -42,10 +42,10 @@ namespace TaskManagement.Client
                             Messages.Handle(user.Email!);
                             return;
                         case "/Blog-elave-et":
-                            AddBlog.Handle();
+                            AddBlog.Handle(user);
                             return;
                         case "/add-comment":
-                            CommentToBlog.Handle();
+                            CommentToBlog.Handle(user);
                             return;
                         case "/cixis":
                             translateWords.ByeBye();
@@ -69,7 +69,7 @@ namespace TaskManagement.Client
                             Messages.Handle(user.Email!);
                             return;
                         case "/Добавить блог":
-                            AddBlog.Handle();
+                            AddBlog.Handle(user);
                             return;
                         case "/выйти":
                             translateWords.ByeBye();
@@ -93,7 +93,7 @@ namespace TaskManagement.Client
                             Messages.Handle(user.Email!);
                             return;
                         case "/add-blog":
-                            AddBlog.Handle();
+                            AddBlog.Handle(user);
                             return;
                         case "/exit":
                             translateWords.ByeBye();

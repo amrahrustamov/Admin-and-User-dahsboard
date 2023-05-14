@@ -7,7 +7,8 @@ namespace TaskManagement.Database
         public static List<User> Users { get; set; } = new List<User>();
         public static List<Inbox> Messages { get; set; } = new List<Inbox>();
         public static List<Blog> Blogs { get; set; } = new List<Blog>();
-        
+        public static List<Comments> Comments { get; set; } = new List<Comments>();
+
         public DataContext()
         {
             AddUserSeeedings();

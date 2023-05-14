@@ -40,45 +40,45 @@ namespace TaskManagement.Admin
                 {
                     switch (command)
                     {
-                        case "/istifadəçiləri-göstərin":
-                            ShowUsersCommand.Handle();
-                            break;
-                        case "/istifadəçini e-poçt vasitəsilə göstərin":
-                            ShowUserByEmailCommand.Handle();
-                            break;
-                        case "/istifadəçini-id-ilə-göstər":
-                            ShowUserByIdCommand.Handle();
-                            break;
-                        case "/istifadeci-elave-edin":
-                            AddUserCommand.Handle();
-                            break;
-                        case "/admin-edin":
-                            PromoteToAdminCommand.Handle();
-                            break;
-                        case "/adminlikden-cixar":
-                            DepromoteFromAdminCommand.Handle();
-                            break;
-                        case "/istifadəçi-parametrini-yenile":
-                            AddUpdateSettingCommand.Handle(user);
-                            break;
-                        case "/istifadecini-silin":
-                            RemoveUserByEmail.Handle();
-                            break;
-                        case "/istifadəçini-deaktiv-et":
-                            BanUserCommand.Handle();
-                            break;
-                        case "/blogları-yoxlayın":
-                            CheckBlogsCommand.Handle();
-                            break;
-                        case "/mesaj-göndərin":
-                            MessageToCommand.Handle();
-                            break;
-                        case "/cixis":
-                            translateWords.ByeBye();
-                            return;
-                        default:
-                            translateWords.InvalidCommand();
-                            break;
+                       case "/istifadecileri-gösterin":
+                           ShowUsersCommand.Handle();
+                           break;
+                       case "/istifadecini e-poct vasitesile gosterin":
+                           ShowUserByEmailCommand.Handle();
+                           break;
+                       case "/istifadecini-id-ile-goster":
+                           ShowUserByIdCommand.Handle();
+                           break;
+                       case "/istifadeci-elave-edin":
+                           AddUserCommand.Handle();
+                           break;
+                       case "/admin-edin":
+                           PromoteToAdminCommand.Handle();
+                           break;
+                       case "/adminlikden-cixar":
+                           DepromoteFromAdminCommand.Handle();
+                           break;
+                       case "/istifadeci-parametrini-yenile":
+                           AddUpdateSettingCommand.Handle(user);
+                           break;
+                       case "/istifadecini-silin":
+                           RemoveUserByEmail.Handle();
+                           break;
+                       case "/istifadecini-deaktiv-et":
+                           BanUserCommand.Handle();
+                           break;
+                       case "/bloglari-yoxlayin":
+                           CheckBlogsCommand.Handle();
+                           break;
+                       case "/mesaj-gonderin":
+                           MessageToCommand.Handle();
+                           break;
+                       case "/cixis":
+                           translateWords.ByeBye();
+                           return;
+                       default:
+                           translateWords.InvalidCommand();
+                           break;
                     }
                 }
                 if (Translate.Language == CurrentLanguage.Ru)

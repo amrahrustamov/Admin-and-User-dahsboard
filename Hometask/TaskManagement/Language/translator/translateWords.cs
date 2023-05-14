@@ -314,21 +314,21 @@ namespace TaskManagement.Language.translator
         }
         public static void ShowUser()
         {
-            string az = "/istifadəçiləri-göstərin";
+            string az = "/istifadecileri-gösterin";
             string ru = "/показать-пользователей";
             string en = "/show-users";
             Common(az, ru, en);
         }
         public static void ShowUserByEmail()
         {
-            string az = "/istifadəçini e-poçt vasitəsilə göstərin";
+            string az = "/istifadecini e-poct vasitesile gosterin";
             string ru = "/показать-пользователя-по-электронной-почте";
             string en = "/show-user-by-email";
             Common(az, ru, en);
         }
         public static void ShowUserById()
         {
-            string az = "/istifadəçini-id-ilə-göstər";
+            string az = "/istifadecini-id-ile-goster";
             string ru = "/показать пользователя по id";
             string en = "/show-user-by-id";
             Common(az, ru, en);
@@ -356,7 +356,7 @@ namespace TaskManagement.Language.translator
         }
         public static void UpdateUserSetting()
         {
-            string az = "/istifadəçi-parametrini-yenile";
+            string az = "/istifadeci-parametrini-yenile";
             string ru = "/обновить настройки пользователя";
             string en = "/update-user-setting";
             Common(az, ru, en);
@@ -370,14 +370,14 @@ namespace TaskManagement.Language.translator
         }
         public static void BanUser()
         {
-            string az = "/istifadəçini-deaktiv-et";
+            string az = "/istifadecini-deaktiv-et";
             string ru = "/забанить-пользователя";
             string en = "/ban-user";
             Common(az, ru, en);
         }
         public static void SendMessageTo()
         {
-            string az = "/mesaj-göndərin";
+            string az = "/mesaj-gonderin";
             string ru = "/Отправить сообщение";
             string en = "/message-to";
             Common(az, ru, en);
@@ -396,9 +396,16 @@ namespace TaskManagement.Language.translator
             string en = "/Add-Blog";
             Common(az, ru, en);
         }
+        public static void NoticeBlogCreated()
+        {
+            string az = "Blog ugurla yaradildi";
+            string ru = "Блог успешно создан";
+            string en = "The blog was successfully created";
+            Common(az, ru, en);
+        }
         public static void CheckBlogs()
         {
-            string az = "/blogları-yoxlayın";
+            string az = "/bloglari-yoxlayin";
             string ru = "/проверить блоги";
             string en = "/check-blogs";
             Common(az, ru, en);

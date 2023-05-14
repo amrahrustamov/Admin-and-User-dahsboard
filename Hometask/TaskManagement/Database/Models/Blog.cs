@@ -38,7 +38,8 @@ namespace TaskManagement.Database.Models
             Owner = owner;
             CreatedAt = createdAt;
             Status = status;
-            
+
+
         }
         
     }
