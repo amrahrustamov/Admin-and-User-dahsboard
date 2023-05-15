@@ -7,9 +7,9 @@ namespace TaskManagement.Database.DataJson
     public class DataOfJson
     {
         public static void JSonUserDocRamToFile()
-        {
+        {                
             var pathName = @"C:\DataOfCSharp\user.txt";
-            File.WriteAllText(pathName, System.Text.Json.JsonSerializer.Serialize(DataContext.Users));
+            File.WriteAllText(pathName, System.Text.Json.JsonSerializer.Serialize(DataContext.Messages));
         }
         public static void JsonUserDocFileToRam()
         {
@@ -51,7 +51,7 @@ namespace TaskManagement.Database.DataJson
         {
             var pathName = @"C:\DataOfCSharp\comment.txt";
             var readText = File.ReadAllText(pathName);
-            var output = JsonConvert.DeserializeObject<List<Comments>>(readText);
+            var output = JsonConvert.DeserializeObject<List<CommentConstructor>>(readText);
             DataContext.Comments = output!;
         }
     }

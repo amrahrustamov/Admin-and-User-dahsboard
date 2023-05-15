@@ -1,6 +1,7 @@
 ﻿using TaskManagement.Language.translator;
 using System.Text;
 using TaskManagement.Database.DataJson;
+using TaskManagement.Database;
 
 namespace TaskManagement
 {
@@ -8,11 +9,17 @@ namespace TaskManagement
     public class Program
     {
         static void Main(string[] args)
-        {
-            DataOfJson.JsonUserDocFileToRam();
+        {           
+            DataContext.AddUserSeeedings();
 
-            Console.OutputEncoding = Encoding.UTF8; ////Dilleri desteklemek ucun
-            Console.InputEncoding = Encoding.UTF8;   ////
+            DataOfJson.JsonUserDocFileToRam();
+            DataOfJson.JsonMessageDocFileToRam();
+            DataOfJson.JsonBlogsDocFileToRam();
+            DataOfJson.JsonCommentDocFileToRam();
+
+                    //Dilleri desteklemek ucun
+            Console.OutputEncoding = Encoding.UTF8; 
+            Console.InputEncoding = Encoding.UTF8;   
 
             translateWords translateWords = new translateWords();
              while(true)

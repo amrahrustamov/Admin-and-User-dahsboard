@@ -44,7 +44,7 @@ namespace TaskManagement.Client
                         case "/Blog-elave-et":
                             AddBlog.Handle(user);
                             return;
-                        case "/add-comment":
+                        case "/serh-elave-et":
                             CommentToBlog.Handle(user);
                             return;
                         case "/cixis":

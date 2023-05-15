@@ -144,11 +144,12 @@ namespace TaskManagement.Common
             {
                 if (user.Email == email)
                 {
-                    translateWords.ExistEmailInfo();
-                    return false;
+                    
+                    return true;
                 }
             }
-            return true;
+            Console.WriteLine("wrong! try again");
+            return false;
         }
         #endregion
 

@@ -25,7 +25,7 @@ namespace TaskManagement.Language.translator
                     case "/giris":
                         LoginCommand.Handle();
                         break;
-                    case "/şərhlərlə-bloqları-göstər":
+                    case "/serhlerle-bloqlari-goster":
                         BlogAndComment.Handle();
                         break;
                     case "/dil-secimlerinizi-yenileyin":
@@ -132,7 +132,7 @@ namespace TaskManagement.Language.translator
         }
         public static void ShowBlogsWithComments()
         {
-            string az = "/şərhlərlə-bloqları-göstər";
+            string az = "/serhlerle-bloqlari-goster";
             string ru = "/показать-блоги-с-комментариями";
             string en = "/show-blogs-with-comments";
             Common(az, ru, en);
@@ -461,7 +461,7 @@ namespace TaskManagement.Language.translator
         }
         public static void AddComments()
         {
-            string az = "/şərh əlavə et";
+            string az = "/serh-elave-et";
             string ru = "/добавить комментарий";
             string en = "/add-comment";
             Common(az, ru, en);

@@ -7,7 +7,8 @@ namespace TaskManagement.Client.CommandOfClient
     {
         public static void Handle(string email)
         {
-            for (int i = 0; i < DataContext.Messages.Count; i++)
+           
+            for (int i = 0; i < DataContext.Messages.Count; i++) //System.NullReferenceException: 'Object reference not set to an instance of an object.'
             {
                 Inbox inbox = DataContext.Messages[i];
 

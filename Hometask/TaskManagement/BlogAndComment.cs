@@ -14,40 +14,56 @@ namespace TaskManagement
     {
         public static void Handle()
         {
-            foreach (Blog blog in DataContext.Blogs)
+            try
             {
-                if (blog.Status == BlogStatus.Approved)
+                foreach (Blog obj in DataContext.Blogs)
                 {
-                    Console.WriteLine($"{blog.CreatedAt} | {blog.Code} | {blog.Owner.Name} {blog.Owner.LastName}");
-                    Console.WriteLine("############################################################");
+                    if (obj.Status == BlogStatus.Approved)
+                    {
+                        Console.WriteLine($"{obj.CreatedAt} | {obj.Code} | {obj.Owner.Name} {obj.Owner.LastName}");
+                        Console.WriteLine("############################################################");
 
                         //Title
-                    if (Translate.Language == CurrentLanguage.Ru)
-                        Console.WriteLine($"=== {blog.Title_Ru} ===");
-                    if (Translate.Language == CurrentLanguage.En)
-                        Console.WriteLine($"=== {blog.Title_En} ===");
-                    else
-                        Console.WriteLine($"=== {blog.Title_Az} ===");
+                        if (Translate.Language == CurrentLanguage.Ru)
+                            Console.WriteLine($"=== {obj.Title_Ru} ===");
+                        if (Translate.Language == CurrentLanguage.En)
+                            Console.WriteLine($"=== {obj.Title_En} ===");
+                        else
+                            Console.WriteLine($"=== {obj.Title_Az} ===");
 
                         //Content
-                    if (Translate.Language == CurrentLanguage.Ru)
-                        Console.WriteLine($"=== {blog.Content_Ru} ===");
-                    if (Translate.Language == CurrentLanguage.En)
-                        Console.WriteLine($"=== {blog.Content_En} ===");
-                    else
-                        Console.WriteLine($"=== {blog.Content_Az} ===");
+                        if (Translate.Language == CurrentLanguage.Ru)
+                            Console.WriteLine($"=== {obj.Content_Ru} ===");
+                        if (Translate.Language == CurrentLanguage.En)
+                            Console.WriteLine($"=== {obj.Content_En} ===");
+                        else
+                            Console.WriteLine($"=== {obj.Content_Az} ===");
 
-                    foreach(Comments item in DataContext.Comments)
-                    {
-                        if(item.CodeOfBlog == blog.Code)
-                        {
                             int i = 1;
-                            Console.WriteLine($"{i}.[{item.DateTime}] [{item.Owner.Name} {item.Owner.LastName}] - {item.Text}");
-                            i++;
+                        try
+                        {
+                            foreach (CommentConstructor item in DataContext.Comments)
+                            {
+                                if (item.CodeOfBlog == obj.Code)
+                                {
+                                    Console.WriteLine($"{i}.[{item.DateTime}] [{item.Owner.Name} {item.Owner.LastName}] - {item.Text}");
+                                    i++;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            return;
                         }
                     }
                 }
             }
+            catch
+            {
+                return;
+            }
+
+           
         }
     }
 }

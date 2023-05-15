@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TaskManagement.Database.Models
 {
-    public class Comments
+    public class CommentConstructor
     {
-        public Comments(string text, string codeOfBlog, User owner, DateTime dateTime)
+        public CommentConstructor(string text, string codeOfBlog, User owner, DateTime dateTime)
         {
             Text = text;
             CodeOfBlog = codeOfBlog;
