@@ -1,6 +1,7 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -12,7 +13,7 @@ namespace TaskManagement.Admin.Commands
             {
                 try
                 {
-                    translateWords.AddEmail();
+                    Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                     string emailForSearch = Console.ReadLine()!;
 
                     foreach (User user in DataContext.Users)
@@ -23,11 +24,11 @@ namespace TaskManagement.Admin.Commands
                             return;
                         }
                     }
-                    translateWords.EmailNotFound();
+                    Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                 }
                 catch 
                 {
-                    translateWords.InvalidCommand();
+                    Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                 }
             }
         }

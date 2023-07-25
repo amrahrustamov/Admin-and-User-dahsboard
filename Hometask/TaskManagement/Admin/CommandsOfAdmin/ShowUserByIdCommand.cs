@@ -1,6 +1,7 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -23,11 +24,11 @@ namespace TaskManagement.Admin.Commands
                         }
                     }
 
-                    translateWords.EmailNotFound();
+                    Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.emailNotFound));
                 }
                 catch 
                 {
-                    translateWords.InvalidCommand();
+                    Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                 }
             }
         }

@@ -2,6 +2,7 @@
 using TaskManagement.Database.DataJson;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -11,7 +12,7 @@ namespace TaskManagement.Admin.Commands
         {
             while (true)
             {
-                translateWords.AddEmail();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addEmail));
                 string email = Console.ReadLine()!;
 
                 foreach (User user in DataContext.Users)
@@ -19,17 +20,17 @@ namespace TaskManagement.Admin.Commands
                     if (user.Email == email && user.IsAdmin != true)
                     {
                         user.IsAdmin = true;
-                        translateWords.BecomeAdminInfo();
+                        Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.becomeAdminInfo));
                         DataOfJson.JSonUserDocRamToFile();
                         return;
                     }
                     if (user.Email == email && user.IsAdmin == true)
                     {
-                        translateWords.IsAdminInfo();
+                        Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.isAdminInfo));
                         return;
                     }
                 }
-                translateWords.EmailNotFound();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.emailNotFound));
                 return;
             }
         }

@@ -2,6 +2,7 @@
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 using TaskManagement.Utilities;
 
 namespace TaskManagement.Common
@@ -15,13 +16,13 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                translateWords.AddName();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addName));             
                 string firstName = Console.ReadLine()!;
 
                if (IsValidFirstName(firstName))
                     return firstName;
-
-                translateWords.SomeInfoIncorrect();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.someInfoIncorrect));
+                
             }
         }
         private bool IsValidFirstName(string firstName)
@@ -38,13 +39,13 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                translateWords.AddLastName();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addLastName));
+                
                 string lastName = Console.ReadLine()!;
 
                 if (IsValidLastName(lastName))
                     return lastName;
-
-                translateWords.SomeInfoIncorrect();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.someInfoIncorrect));
             }
         }
         private bool IsValidLastName(string lastName)
@@ -62,16 +63,16 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                translateWords.AddPassword();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addPassword));
                 string password = Console.ReadLine()!;
 
-                translateWords.AddRePassword();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addRePassword));
                 string confirmPassword = Console.ReadLine()!;
 
                 if (password == confirmPassword)
                     return password;
 
-                translateWords.SomeInfoIncorrect();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.someInfoIncorrect));
             }
         }
         #endregion
@@ -81,7 +82,8 @@ namespace TaskManagement.Common
         {
             while (true)
             {
-                translateWords.AddEmail();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addEmail));
+                
                 string email = Console.ReadLine()!;
 
                 if(CheckReceipent(email) == true && CheckEmailLength(email) == true && CheckSeparator(email) == true
@@ -97,7 +99,7 @@ namespace TaskManagement.Common
             Match match = regex.Match(email);
             if (match.Success)
                 return true;
-            translateWords.IncorrectDomain();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.someInfoIncorrect));
             return false;         
         }
         public bool CheckSeparator(string email) /// this is extra control of seperator
@@ -107,7 +109,7 @@ namespace TaskManagement.Common
             Match match = regex.Match(email);
             if (match.Success)
                 return true;
-            translateWords.NeedAtSign();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.needAtSign));
             return false;
         }
         public bool CheckReceipent(string email)
@@ -118,7 +120,7 @@ namespace TaskManagement.Common
             Match match = regex.Match(email);
             if (!match.Success)
                 return true;
-            translateWords.AllowLetterAndNumber();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.allowLetterAndNumber));
             return false;
         }
         public bool CheckEmailLength(string email)
@@ -135,7 +137,7 @@ namespace TaskManagement.Common
                        ///control length
             if (i >= 10 && i <= 30)
                 return true;
-            translateWords.TextLengInfo();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.textLengInfo));    
             return false;
         }
         private bool IsEmailExists(string email)
@@ -176,7 +178,7 @@ namespace TaskManagement.Common
         {
              while(true)
              {
-                translateWords.AddEmail();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addEmail));     
                 string email = Console.ReadLine()!;
                   
                   if (IsEmailExists(email))

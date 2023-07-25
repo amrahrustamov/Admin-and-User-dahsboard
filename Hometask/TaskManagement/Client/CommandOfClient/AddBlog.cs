@@ -9,6 +9,7 @@ using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
 using TaskManagement.Database.DataJson;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Client.CommandOfClient
 {
@@ -16,18 +17,18 @@ namespace TaskManagement.Client.CommandOfClient
     {
         public static void Handle(User user)
         {
-            translateWords.AddBlogNameAze();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlogNameAze));
             string title_Az = Console.ReadLine()!;
-            translateWords.AddBlogNameRus();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlogNameRus));
             string title_Ru = Console.ReadLine()!;
-            translateWords.AddBlogNameEng();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlogNameEng));
             string title_En = Console.ReadLine()!;
 
-            translateWords.AddBlogAze();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlogAze));
             string content_Az = Console.ReadLine()!;
-            translateWords.AddBlogRus();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlogRus));
             string content_Ru = Console.ReadLine()!;
-            translateWords.AddBlogEng();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlogEng));
             string content_En = Console.ReadLine()!;
 
             string code = RandomCode();
@@ -35,7 +36,7 @@ namespace TaskManagement.Client.CommandOfClient
             Blog blog = new Blog(code, title_Az, title_Ru, title_En, content_Az, content_Ru, content_En, user, BlogStatus.Created);
             DataContext.Blogs.Add(blog);          
             DataOfJson.JSonBlogsDocRamToFile();
-            translateWords.NoticeBlogCreated();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.noticeBlogCreated));
         }
         public static string RandomCode()
         {

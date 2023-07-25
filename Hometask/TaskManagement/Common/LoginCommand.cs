@@ -3,6 +3,7 @@ using TaskManagement.Client;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Common
 {
@@ -10,14 +11,13 @@ namespace TaskManagement.Common
     {
         public static void Handle() //use alias
         {
-            translateWords.AddEmail();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addEmail));
             string email = Console.ReadLine()!;
-            translateWords.AddPassword();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addPassword));
             string password = Console.ReadLine()!;
 
             for (int i = 0; i < DataContext.Users.Count; i++)
             {
-
                 User user = DataContext.Users[i];
 
                 if (user.Email == email && user.Password == password && user.IsDeactive == false)

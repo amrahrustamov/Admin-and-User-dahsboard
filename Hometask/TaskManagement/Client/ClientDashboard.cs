@@ -11,21 +11,21 @@ namespace TaskManagement.Client
         public static void Introduction(User user) 
         {
             Console.WriteLine("**************************************************");
-            translateWords.HelloAdmin();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.helloAdmin));
             Console.WriteLine($" : {user.Name} {user.LastName}");
             Console.WriteLine("");
 
             while (true)
             {
                 Console.WriteLine("");
-                translateWords.UpdateUserSetting();
-                translateWords.CloseAccount();
-                translateWords.Messages();
-                translateWords.AddBlog();
-                translateWords.AddComments();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.updateUserSetting));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.closeAccount));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.messages));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addBlog));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addComments));           
                 Console.WriteLine("");
 
-                translateWords.AddCommand();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addCommand));  
                 string command = Console.ReadLine()!;
 
                 if (Translate.Language == CurrentLanguage.Az)
@@ -48,10 +48,10 @@ namespace TaskManagement.Client
                             CommentToBlog.Handle(user);
                             return;
                         case "/cixis":
-                            translateWords.ByeBye();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye)); 
                             return;
                         default:
-                            translateWords.InvalidCommand();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                             break;
                      }
                 }
@@ -72,10 +72,10 @@ namespace TaskManagement.Client
                             AddBlog.Handle(user);
                             return;
                         case "/выйти":
-                            translateWords.ByeBye();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
                             return;
                         default:
-                            translateWords.InvalidCommand();                           
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                             break;
                     }
                 }
@@ -96,10 +96,10 @@ namespace TaskManagement.Client
                             AddBlog.Handle(user);
                             return;
                         case "/exit":
-                            translateWords.ByeBye();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
                             return;
                         default:
-                            translateWords.InvalidCommand();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                             break;
                     }
                 }

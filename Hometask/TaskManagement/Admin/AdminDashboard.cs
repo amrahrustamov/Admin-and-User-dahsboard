@@ -12,28 +12,28 @@ namespace TaskManagement.Admin
         public static void Introduction(User user)
         {
             Console.WriteLine("**************************************************");
-            translateWords.HelloAdmin();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.helloAdmin));
             Console.WriteLine($" : {user.Name} {user.LastName}");
             Console.WriteLine("");
 
             while (true)
             {
                 Console.WriteLine("");
-                translateWords.ShowUser();
-                translateWords.ShowUserByEmail();
-                translateWords.ShowUserById();
-                translateWords.AddUser();
-                translateWords.PromoteToAdmin();
-                translateWords.DepromoteToAdmin();
-                translateWords.UpdateUserSetting();
-                translateWords.RemoveUser();
-                translateWords.BanUser();
-                translateWords.SendMessageTo();
-                translateWords.CheckBlogs();
-                translateWords.Logout();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.showUser));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.showUserByEmail));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.showUserById));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addUser));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.promoteToAdmin));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.depromoteToAdmin));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.updateUserSetting));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.removeUser));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.banUser));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.sendMessageTo));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.checkBlogs));
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.logout));
                 Console.WriteLine("");
 
-                translateWords.AddCommand();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addCommand));
                 string command = Console.ReadLine()!;
                
                 if (Translate.Language == CurrentLanguage.Az)
@@ -74,11 +74,11 @@ namespace TaskManagement.Admin
                            MessageToCommand.Handle(user);
                            break;
                        case "/cixis":
-                           translateWords.ByeBye();
-                           return;
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
+                            return;
                        default:
-                           translateWords.InvalidCommand();
-                           break;
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
+                            break;
                     }
                 }
                 if (Translate.Language == CurrentLanguage.Ru)
@@ -119,10 +119,10 @@ namespace TaskManagement.Admin
                             MessageToCommand.Handle(user);
                             break;
                         case "/выйти":
-                            translateWords.ByeBye();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
                             return;
                         default:
-                            translateWords.InvalidCommand();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                             break;
                     }
                 }
@@ -164,10 +164,10 @@ namespace TaskManagement.Admin
                             MessageToCommand.Handle(user);
                             break;
                         case "/logout":
-                            translateWords.ByeBye();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
                             return;
                         default:
-                            translateWords.InvalidCommand();
+                            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
                             break;
                     }
                 }

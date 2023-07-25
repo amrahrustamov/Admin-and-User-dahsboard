@@ -6,6 +6,7 @@ using TaskManagement.Database.DataJson;
 using System;
 using System.Reflection;
 using System.Xml.Linq;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Client.CommandOfClient
 {
@@ -15,9 +16,9 @@ namespace TaskManagement.Client.CommandOfClient
         {
             while(true)
             {
-                translateWords.AddCodeOfBlog();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addCodeOfBlog));
                 string AddCode = Console.ReadLine()!;
-                translateWords.AddCommentTextToBlog();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addCommentTextToBlog));
                 string addComment = Console.ReadLine()!;
               
                 UserValidator userValidator = new UserValidator();
@@ -30,18 +31,18 @@ namespace TaskManagement.Client.CommandOfClient
                     CommentConstructor comment = new CommentConstructor(addComment, AddCode, user, DateTime.Now);
                     DataContext.Comments.Add(comment);
                     DataOfJson.JSonCommentDocRamToFile();
-                    translateWords.SuccesAddComment();
+                    Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.succesAddComment));
                     SendNoticeMessage(user, AddCode);
                     return;
                 }
-                translateWords.UnsuccesCommentNotice();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.unsuccesCommentNotice));
             }
         }
         public static bool CheckCode(string AddCode)
         {
             if(DataContext.Blogs.Count == 0)
             {
-                translateWords.NotFoundBlogByCode();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.notFoundBlogByCode));
                 return false;
             }
 
@@ -50,7 +51,7 @@ namespace TaskManagement.Client.CommandOfClient
                 if (item.Code == AddCode)
                     return true;
             }
-            translateWords.NotFoundBlogByCode();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.notFoundBlogByCode));
             return false;
         }
         public static void SendNoticeMessage(User user,string AddCode)

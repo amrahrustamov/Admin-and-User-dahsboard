@@ -14,6 +14,7 @@ namespace TaskManagement.Language.translator
     {
         public static void LangChoise(string command)
         {
+
             
             if (Translate.Language == CurrentLanguage.Az)
             {
@@ -32,10 +33,10 @@ namespace TaskManagement.Language.translator
                         LocalizationService.Handle();
                         break;
                     case "/cixis":
-                        ByeBye();
+                        LocalizationService.GetTranslation(TranslationKey.byeBye);
                         return;
                     default:
-                        InvalidCommand();
+                        LocalizationService.GetTranslation(TranslationKey.invalidCommand);
                         break;
                 }
             }
@@ -56,10 +57,10 @@ namespace TaskManagement.Language.translator
                         LocalizationService.Handle();
                         break;
                     case "/выход":
-                        ByeBye();
+                        LocalizationService.GetTranslation(TranslationKey.byeBye);
                         return;
                     default:
-                        InvalidCommand();
+                        LocalizationService.GetTranslation(TranslationKey.invalidCommand);
                         break;
                 }
             }
@@ -80,472 +81,258 @@ namespace TaskManagement.Language.translator
                         LocalizationService.Handle();
                         break;
                     case "/exit":
-                        ByeBye();
+                        Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
                         return;
                     default:
-                        InvalidCommand();
+                        Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
+                        
                         break;
                 }
             }
         }
         public static void ShowMenu()
         {
+
+
+
             Console.WriteLine("");
-            Register();
-            Login();
-            ShowBlogsWithComments();
-            UpdateLanguage();
-            Exit();
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.register));
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.login));
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.showBlogsWithComments));
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.updateLanguage));
+            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.exit));    
             Console.WriteLine("");
-        }
-        public static void Common(string az, string ru, string en)
-        {
-            if (Translate.Language == CurrentLanguage.Az)
-                Console.WriteLine(az);
-            if (Translate.Language == CurrentLanguage.Ru)
-                Console.WriteLine(ru);
-            if (Translate.Language == CurrentLanguage.En)
-                Console.WriteLine(en);
         }
 
+
         #region Main
-        public static void AddCommand()
-        {
-            string az = "Komanda əlavə edin";
-            string ru = "Добавить команду";
-            string en = "Add command";
-            Common(az, ru, en);
-        }
-        public  static void Register()
-        {
-            string az = "/qeydiyyat";
-            string ru = "/регистрация";
-            string en = "/register";
-            Common(az, ru, en);
-        }
-        public static void Login()
-        {
-            string az = "/giris";
-            string ru = "/вход";
-            string en = "/login";
-            Common(az, ru, en);
-        }
-        public static void ShowBlogsWithComments()
-        {
-            string az = "/serhlerle-bloqlari-goster";
-            string ru = "/показать-блоги-с-комментариями";
-            string en = "/show-blogs-with-comments";
-            Common(az, ru, en);
-        }
-        public static void UpdateLanguage()
-        {
-            string az = "/dil-secimlerinizi-yenileyin";
-            string ru = "/обновить-языковые-настройки";
-            string en = "/update-language-preference";
-            Common(az, ru, en);
-        }
-        public static void Exit()
-        {
-            string az = "/cixis";
-            string ru = "/выход";
-            string en = "/exit";
-            Common(az, ru, en);
-        }
-        public static void InvalidCommand()
-        {
-            string az = "Yanlis komanda, Yeniden daxil edin";
-            string ru = "Неверная команда, пожалуйста, попробуйте еще раз";
-            string en = "Invalid command, pls try again";
-            Common(az, ru, en);
-        }
-        public static void ByeBye()
-        {
-            string az = "helelik";
-            string ru = "пока";
-            string en = "bye bye";
-            Common(az, ru, en);
-        }
-        public static void AddBlogNameAze()
-        {
-            string az = "Azərbaycan dilində blogun başlığını əlavə et : ";
-            string ru = "Добавить название блога на азербайджанском языке : ";
-            string en = "Add blog title in Azerbaijani : ";
-            Common(az, ru, en);
-        }
-        public static void AddBlogNameRus()
-        {
-            string az = "Rus dilində blog başlığını əlavə et : ";
-            string ru = "Добавить название блога на русском языке : ";
-            string en = "Add blog title in Russian : ";
-            Common(az, ru, en);
-        }
-        public static void AddBlogNameEng()
-        {
-            string az = "İngilis dilində blog başlığını əlavə et : ";
-            string ru = "Добавить название блога на английском языке : ";
-            string en = "Add blog title in English : ";
-            Common(az, ru, en);
-        }
-        public static void AddBlogAze()
-        {
-            string az = "Azərbaycan dilində blog məzmunu əlavə edin : ";
-            string ru = "Добавить содержимое блога на азербайджанском языке : ";
-            string en = "Add blog content in Azerbaijani : ";
-            Common(az, ru, en);
-        }
-        public static void AddBlogRus()
-        {
-            string az = "Rus dilində blog məzmunu əlavə edin : ";
-            string ru = "Добавить контент блога на русском языке : ";
-            string en = "Add blog content in Russian : ";
-            Common(az, ru, en);
-        }
-        public static void AddBlogEng()
-        {
-            string az = "İngilis dilində blog məzmunu əlavə edin : ";
-            string ru = "Добавить контент блога на английском языке : ";
-            string en = "Add blog content in English : ";
-            Common(az, ru, en);
-        }
+
+        public const string addCommand_Az = "Komanda əlavə edin";
+        public const string addCommand_Ru = "Добавить команду";
+        public const string addCommand_En = "Add command";
+
+        public const string register_Az = "/qeydiyyat";
+        public const string register_Ru = "/регистрация";
+        public const string register_En = "/register";
+
+        public const string login_Az = "/giris";
+        public const string login_Ru = "/вход";
+        public const string login_En = "/login";
+
+        public const string showBlogsWithComments_Az = "/serhlerle-bloqlari-goster";
+        public const string showBlogsWithComments_Ru = "/показать-блоги-с-комментариями";
+        public const string showBlogsWithComments_En = "/show-blogs-with-comments";
+
+        public const string updateLanguage_Az = "/dil-secimlerinizi-yenileyin";
+        public const string updateLanguage_Ru = "/обновить-языковые-настройки";
+        public const string updateLanguage_En = "/update-language-preference";
+
+        public const string exit_Az = "/cixis";
+        public const string exit_Ru = "/выход";
+        public const string exit_En = "/exit";
+
+        public const string invalidCommand_Az = "Yanlis komanda, Yeniden daxil edin";
+        public const string invalidCommand_Ru = "Неверная команда, пожалуйста, попробуйте еще раз";
+        public const string invalidCommand_En = "Invalid command, pls try again";
+
+        public const string byeBye_Az = "helelik";
+        public const string byeBye_Ru = "пока";
+        public const string byeBye_En = "bye bye";
+
+        public const string addBlogNameAze_Az = "Azərbaycan dilində blogun başlığını əlavə et : ";
+        public const string addBlogNameAze_Ru = "Добавить название блога на азербайджанском языке : ";
+        public const string addBlogNameAze_En = "Add blog title in Azerbaijani : ";
+
+        public const string addBlogNameRus_Az = "Rus dilində blog başlığını əlavə et : ";
+        public const string addBlogNameRus_Ru = "Добавить название блога на русском языке : ";
+        public const string addBlogNameRus_En = "Add blog title in Russian : ";
+
+        public const string addBlogNameEng_Az = "İngilis dilində blog başlığını əlavə et : ";
+        public const string addBlogNameEng_Ru = "Добавить название блога на английском языке : ";
+        public const string addBlogNameEng_En = "Add blog title in English : ";
+
+        public const string addBlogAze_Az = "Azərbaycan dilində blog məzmunu əlavə edin : ";
+        public const string addBlogAze_Ru = "Добавить содержимое блога на азербайджанском языке : ";
+        public const string addBlogAze_En = "Add blog content in Azerbaijani : ";
+
+        public const string addBlogRus_Az = "Rus dilində blog məzmunu əlavə edin : ";
+        public const string addBlogRus_Ru = "Добавить контент блога на русском языке : ";
+        public const string addBlogRus_En = "Add blog content in Russian : ";
+
+        public const string addBlogEng_Az = "İngilis dilində blog məzmunu əlavə edin : ";
+        public const string addBlogEng_Ru = "Добавить контент блога на английском языке : ";
+        public const string addBlogEng_En = "Add blog content in English : ";
+
         #endregion
 
         #region register
 
-        public static void AddName()
-        {
-            string az = "Zəhmət olmasa ad daxil edin";
-            string ru = "Пожалуйста, введите имя";
-            string en = "Pls enter first name";
-            Common(az, ru, en);
-        }
-        public static void SomeInfoIncorrect()
-        {
-            string az = "Bəzi məlumatlar düzgün deyil";
-            string ru = "Некоторая информация неверна";
-            string en = "Some information is not correct";
-            Common(az, ru, en);
-        }
-        public static void AddLastName()
-        {
-            string az = "Zəhmət olmasa soyadını daxil edin";
-            string ru = "Пожалуйста, введите фамилию";
-            string en = "Pls enter last name";
-            Common(az, ru, en);
-        }
-        public static void AddPassword()
-        {
-            string az = "Zəhmət olmasa parol daxil edin";
-            string ru = "Пожалуйста, введите пароль";
-            string en = "Pls enter password";
-            Common(az, ru, en);
-        }
-        public static void AddRePassword()
-        {
-            string az = "Zəhmət olmasa təsdiq parolunu daxil edin";
-            string ru = "Пожалуйста, введите пароль для подтверждения";
-            string en = "Pls enter confirm password";
-            Common(az, ru, en);
-        }
-        public static void AddEmail()
-        {
-            string az = "Zəhmət olmasa e - poçtu daxil edin";
-            string ru = "Пожалуйста, введите адрес электронной почты";
-            string en = "Pls enter email";
-            Common(az, ru, en);
-        }
-        public static void IncorrectDomain()
-        {
-            string az = "Yanlış daxiletmə! Bu proqramda yalnız code.edu.az domenindən istifadə olunur";
-            string ru = "Неверный ввод! В этом приложении используется только домен code.edu.az";
-            string en = "Incorrect input!In this app used only domain of code.edu.az";
-            Common(az, ru, en);
-        }
-        public static void NeedAtSign()
-        {
-            string az = "Yanlış daxiletmə! Girişinizdə bir @ işarəsi olmalıdır";
-            string ru = "Неверный ввод! В вашем вводе должен быть один знак @";
-            string en = "Incorrect input! Must be one @ sign in your input";
-            Common(az, ru, en);
-        }
-        public static void AllowLetterAndNumber()
-        {
-            string az = "Yanlış daxiletmə! Yalnız (min 1) hərf və rəqəmlərə (min1) icazə verilir";
-            string ru = "Неверный ввод! Разрешены только (мин. 1) буквы и цифры (мин. 1)";
-            string en = "Incorrect input! Only (min 1)letters and numbers(min1) are allowed";
-            Common(az, ru, en);
-        }
-        public static void TextLengInfo()
-        {
-            string az = "Yanlış daxiletmə! Mətnin uzunluğu minimum 10 ilə maksimum 30 simvol arasında olmalıdır";
-            string ru = "Неверный ввод! Длина текста должна быть от 10 до 30 символов";
-            string en = "Incorrect input! Text length must be between min 10 and max 30 charachters";
-            Common(az, ru, en);
-        }
-        public static void ExistEmailInfo()
-        {
-            string az = "Bu e-poçt artıq sistemdə istifadə olunur, lütfən, başqa e-poçtu yoxlayın";
-            string ru = "Этот адрес электронной почты уже используется в системе, попробуйте другой адрес электронной почты.";
-            string en = "This email is already used in system, pls try another email";
-            Common(az, ru, en);
-        }
-        public static void SuccesRegistr()
-        {
-            string az = "Siz uğurla qeydiyyatdan keçmisiniz";
-            string ru = "Вы успешно зарегистрировались";
-            string en = "You have successfully registered";
-            Common(az, ru, en);
-        }
+        public const string addName_Az = "Zəhmət olmasa ad daxil edin";
+        public const string addName_Ru = "Пожалуйста, введите имя";
+        public const string addName_En = "Pls enter first name";
+
+        public const string someInfoIncorrect_Az = "Bəzi məlumatlar düzgün deyil";
+        public const string someInfoIncorrect_Ru = "Некоторая информация неверна";
+        public const string someInfoIncorrect_En = "Some information is not correct";
+
+        public const string addLastName_Az = "Zəhmət olmasa soyadını daxil edin";
+        public const string addLastName_Ru = "Пожалуйста, введите фамилию";
+        public const string addLastName_En = "Pls enter last name";
+
+        public const string addPassword_Az = "Zəhmət olmasa parol daxil edin";
+        public const string addPassword_Ru = "Пожалуйста, введите пароль";
+        public const string addPassword_En = "Pls enter password";
+
+        public const string addRePassword_Az = "Zəhmət olmasa təsdiq parolunu daxil edin";
+        public const string addRePassword_Ru = "Пожалуйста, введите пароль для подтверждения";
+        public const string addRePassword_En = "Pls enter confirm password";
+
+        public const string addEmail_Az = "Zəhmət olmasa e - poçtu daxil edin";
+        public const string addEmail_Ru = "Пожалуйста, введите адрес электронной почты";
+        public const string addEmail_En = "Pls enter email";
+
+        public const string incorrectDomain_Az = "Yanlış daxiletmə! Bu proqramda yalnız code.edu.az domenindən istifadə olunur";
+        public const string incorrectDomain_Ru = "Неверный ввод! В этом приложении используется только домен code.edu.az";
+        public const string incorrectDomain_En = "Incorrect input!In this app used only domain of code.edu.az";
+
+        public const string needAtSign_Az = "Yanlış daxiletmə! Girişinizdə bir @ işarəsi olmalıdır";
+        public const string needAtSign_Ru = "Неверный ввод! В вашем вводе должен быть один знак @";
+        public const string needAtSign_En = "Incorrect input! Must be one @ sign in your input";
+
+        public const string allowLetterAndNumber_Az = "Yanlış daxiletmə! Yalnız (min 1) hərf və rəqəmlərə (min1) icazə verilir";
+        public const string allowLetterAndNumber_Ru = "Неверный ввод! Разрешены только (мин. 1) буквы и цифры (мин. 1)";
+        public const string allowLetterAndNumber_En = "Incorrect input! Only (min 1)letters and numbers(min1) are allowed";
+
+        public const string textLengInfo_Az = "Yanlış daxiletmə! Mətnin uzunluğu minimum 10 ilə maksimum 30 simvol arasında olmalıdır";
+        public const string textLengInfo_Ru = "Неверный ввод! Длина текста должна быть от 10 до 30 символов";
+        public const string textLengInfo_En = "Incorrect input! Text length must be between min 10 and max 30 charachters";
+
+        public const string existEmailInfo_Az = "Bu e-poçt artıq sistemdə istifadə olunur, lütfən, başqa e-poçtu yoxlayın";
+        public const string existEmailInfo_Ru = "Этот адрес электронной почты уже используется в системе, попробуйте другой адрес электронной почты.";
+        public const string existEmailInfo_En = "This email is already used in system, pls try another email";
+
+        public const string succesRegistr_Az = "Siz uğurla qeydiyyatdan keçmisiniz";
+        public const string succesRegistr_Ru = "Вы успешно зарегистрировались";
+        public const string succesRegistr_En = "You have successfully registered";
         #endregion
 
         #region login
-        public static void HelloAdmin()
-        {
-            string az = "Salam admin";
-            string ru = "Привет админ";
-            string en = "Hello admin";
-            Common(az, ru, en);
-        }
-        public static void Hello()
-        {
-            string az = "Salam";
-            string ru = "Привет";
-            string en = "Hello";
-            Common(az, ru, en);
-        }
-        public static void ShowUser()
-        {
-            string az = "/istifadecileri-gösterin";
-            string ru = "/показать-пользователей";
-            string en = "/show-users";
-            Common(az, ru, en);
-        }
-        public static void ShowUserByEmail()
-        {
-            string az = "/istifadecini e-poct vasitesile gosterin";
-            string ru = "/показать-пользователя-по-электронной-почте";
-            string en = "/show-user-by-email";
-            Common(az, ru, en);
-        }
-        public static void ShowUserById()
-        {
-            string az = "/istifadecini-id-ile-goster";
-            string ru = "/показать пользователя по id";
-            string en = "/show-user-by-id";
-            Common(az, ru, en);
-        }
-        public static void AddUser()
-        {
-            string az = "/istifadeci-elave-edin";
-            string ru = "/Добавить-пользователя";
-            string en = "/add-user";
-            Common(az, ru, en);
-        }
-        public static void PromoteToAdmin()
-        {
-            string az = "/admin-edin";
-            string ru = "/повысить-до-администратора";
-            string en = "/promote-to-admin";
-            Common(az, ru, en);
-        }
-        public static void DepromoteToAdmin()
-        {
-            string az = "/adminlikden-cixar";
-            string ru = "/деактивировать-от-администратора";
-            string en = "/depromote-from-admin";
-            Common(az, ru, en);
-        }
-        public static void UpdateUserSetting()
-        {
-            string az = "/istifadeci-parametrini-yenile";
-            string ru = "/обновить настройки пользователя";
-            string en = "/update-user-setting";
-            Common(az, ru, en);
-        }
-        public static void RemoveUser()
-        {
-            string az = "/istifadecini-silin";
-            string ru = "/удалить-пользователя";
-            string en = "/remove-user";
-            Common(az, ru, en);
-        }
-        public static void BanUser()
-        {
-            string az = "/istifadecini-deaktiv-et";
-            string ru = "/забанить-пользователя";
-            string en = "/ban-user";
-            Common(az, ru, en);
-        }
-        public static void SendMessageTo()
-        {
-            string az = "/mesaj-gonderin";
-            string ru = "/Отправить сообщение";
-            string en = "/message-to";
-            Common(az, ru, en);
-        }
-        public static void Messages()
-        {
-            string az = "/Mesajlar";
-            string ru = "/Сообщения";
-            string en = "/Messages";
-            Common(az, ru, en);
-        }
-        public static void AddBlog()
-        {
-            string az = "/Blog-elave-et";
-            string ru = "/Добавить блог";
-            string en = "/Add-Blog";
-            Common(az, ru, en);
-        }
-        public static void NoticeBlogCreated()
-        {
-            string az = "Blog ugurla yaradildi";
-            string ru = "Блог успешно создан";
-            string en = "The blog was successfully created";
-            Common(az, ru, en);
-        }
-        public static void CheckBlogs()
-        {
-            string az = "/bloglari-yoxlayin";
-            string ru = "/проверить блоги";
-            string en = "/check-blogs";
-            Common(az, ru, en);
-        }
-        public static void Logout()
-        {
-            string az = "/cixis";
-            string ru = "/выйти";
-            string en = "/logout";
-            Common(az, ru, en);
-        }
-        public static void EmailNotFound()
-        {
-            string az = "E-poçt tapılmadı";
-            string ru = "Электронная почта не найдена";
-            string en = "Email not found";
-            Common(az, ru, en);
-        }
-        public static void BecomeAdminInfo()
-        {
-            string az = "Bu e-poçtun sahibi admin oldu";
-            string ru = "Владелец этого письма стал администратором";
-            string en = "The owner of this email has become an admin";
-            Common(az, ru, en);
-        }
-        public static void IsAdminInfo()
-        {
-            string az = "Bu e-poçtun sahibi artıq admindir";
-            string ru = "Владелец этого адреса электронной почты уже является администратором";
-            string en = "The owner of this email is already admin";
-            Common(az, ru, en);
-        }
-        public static void BecomeUserInfo()
-        {
-            string az = "Bu e-poçtun sahibi istifadəçi oldu";
-            string ru = "Владелец этого письма стал пользователем";
-            string en = "The owner of this email has become user";
-            Common(az, ru, en);
-        }
-        public static void IsUserInfo()
-        {
-            string az = "Bu e-poçtun sahibi artıq istifadəçidir";
-            string ru = "Владелец этого электронного письма уже является пользователем";
-            string en = "The owner of this email already is user";
-            Common(az, ru, en);
-        }
-        public static void CloseAccount()
-        {
-            string az = "/Hesabi-baglayin";
-            string ru = "/Закрыть аккаунт";
-            string en = "/CloseAccount";
-            Common(az, ru, en);
-        }
-        public static void AddComments()
-        {
-            string az = "/serh-elave-et";
-            string ru = "/добавить комментарий";
-            string en = "/add-comment";
-            Common(az, ru, en);
-        }
-        public static void AddCodeOfBlog()
-        {
-            string az = "Blogun kodunu daxil edin : ";
-            string ru = "Введите код блога : ";
-            string en = "Enter the blog code : ";
-            Common(az, ru, en);
-        }
-        public static void AddCommentTextToBlog()
-        {
-            string az = "Mətn əlavə edin : ";
-            string ru = "Добавить текст : ";
-            string en = "Add text : ";
-            Common(az, ru, en);
-        }
-        public static void SuccesAddComment()
-        {
-            string az = "Şərh uğurla əlavə edildi";
-            string ru = "Комментарий успешно добавлен";
-            string en = "Comment successfully added";
-            Common(az, ru, en);
-        }
-        public static void NotFoundBlogByCode()
-        {
-            string az = "Bu kodda heç bir vlog tapılmadı";
-            string ru = "В этом коде видеоблог не найден";
-            string en = "No vlog found in this code";
-            Common(az, ru, en);
-        }
-        public static void UnsuccesCommentNotice()
-        {
-            string az = "Mətnin uzunluğu 1 ilə 30 arasında olmalıdır və mətndə təhqiredici sözlərdən istifadə edilməməlidir.";
-            string ru = "Длина текста должна быть от 1 до 30, в тексте не должно быть оскорбительных слов";
-            string en = "The length of the text must be between 1 and 30 and the text must not use offensive words";
-            Common(az, ru, en);
-        }
 
-        #endregion
+        public const string helloAdmin_Az = "Salam admin";
+        public const string helloAdmin_Ru = "Привет админ";
+        public const string helloAdmin_En = "Hello admin";
 
-        #region Extra
+        public const string hello_Az = "Salam";
+        public const string hello_Ru = "Salam";
+        public const string hello_En = "Hello";
 
-        //public static List<TranslationContainer> _translations = new List<TranslationContainer>
-        //{
-        //     new TranslationContainer("AddCommand","Komanda əlavə edin","Добавить команду","Add command"),
-        //     new TranslationContainer("Register","/qeydiyyat","/регистрация","/register"),
-        //     new TranslationContainer("Login","/giris","/вход","/login"),
-        //     new TranslationContainer("UpdateLanguage","/dil-secimlerinizi-yenileyin","/обновить-языковые-настройки","/update-language-preference"),
-        //     new TranslationContainer("Exit","/cixis","/выход","/exit"),
-        //     new TranslationContainer("InvalidCommand","Yanlis komanda, Yeniden daxil edin","Неверная команда, пожалуйста, попробуйте еще раз","Invalid command, pls try again"),
-        //     new TranslationContainer("ByeBye","helelik","пока","bye bye"),
-        //     new TranslationContainer("AddName","Zəhmət olmasa ad daxil edin","Пожалуйста, введите имя","Pls enter first name"),
-        //     new TranslationContainer("SomeInfoIncorrect","Bəzi məlumatlar düzgün deyil","Некоторая информация неверна","Some information is not correct"),
-        //     new TranslationContainer("AddLastName","Zəhmət olmasa soyadını daxil edin","Пожалуйста, введите фамилию","Pls enter last name"),
-        //     new TranslationContainer("AddPassword","Zəhmət olmasa parol daxil edin","Пожалуйста, введите пароль","Pls enter password"),
-        //     new TranslationContainer("AddRePassword","Zəhmət olmasa təsdiq parolunu daxil edin","Пожалуйста, введите пароль для подтверждения","Pls enter confirm password"),
-        //     new TranslationContainer("AddEmail","Zəhmət olmasa e - poçtu daxil edin","Пожалуйста, введите адрес электронной почты","Pls enter email"),
-        //     new TranslationContainer("IncorrectDomain","Yanlış daxiletmə! Bu proqramda yalnız code.edu.az domenindən istifadə olunur","Неверный ввод! В этом приложении используется только домен code.edu.az","Incorrect input!In this app used only domain of code.edu.az"),
-        //     new TranslationContainer("NeedAtSign","Yanlış daxiletmə! Girişinizdə bir @ işarəsi olmalıdır","Неверный ввод! В вашем вводе должен быть один знак @","Incorrect input! Must be one @ sign in your input"),
-        //     new TranslationContainer("AllowLetterAndNumber","Yanlış daxiletmə! Yalnız (min 1) hərf və rəqəmlərə (min1) icazə verilir","Неверный ввод! Разрешены только (мин. 1) буквы и цифры (мин. 1)","Incorrect input! Only (min 1)letters and numbers(min1) are allowed"),
-        //     new TranslationContainer("TextLengInfo","Yanlış daxiletmə! Mətnin uzunluğu minimum 10 ilə maksimum 30 simvol arasında olmalıdır","Неверный ввод! Длина текста должна быть от 10 до 30 символов","Incorrect input! Text length must be between min 10 and max 30 charachters"),
-        //     new TranslationContainer("ExistEmailInfo","Bu e-poçt artıq sistemdə istifadə olunur, lütfən, başqa e-poçtu yoxlayın","Этот адрес электронной почты уже используется в системе, попробуйте другой адрес электронной почты.","This email is already used in system, pls try another email"),
-        //     new TranslationContainer("SuccesRegistr","Siz uğurla qeydiyyatdan keçmisiniz","Вы успешно зарегистрировались","You have successfully registered"),
-        //     new TranslationContainer("ShowUser","/istifadəçiləri-göstərin","/показать-пользователей","/show-users"),
-        //     new TranslationContainer("ShowUserByEmail","/istifadəçini e-poçt vasitəsilə göstərin","/показать-пользователя-по-электронной-почте","/show-user-by-email"),
-        //     new TranslationContainer("ShowUserById","/istifadəçini-id-ilə-göstər","/показать пользователя по id","/show-user-by-id"),
-        //     new TranslationContainer("AddUser","/istifadeci-elave-edin","/Добавить-пользователя","/add-user"),
-        //     new TranslationContainer("PromoteToAdmin","/admin-edin","/повысить-до-администратора","/promote-to-admin"),
-        //     new TranslationContainer("DepromoteToAdmin","/adminlikden-cixar","/деактивировать-от-администратора","/depromote-from-admin"),
-        //     new TranslationContainer("UpdateUserSetting","/istifadəçi-parametrini-yenile","/обновить настройки пользователя","/update-user-setting"),
-        //     new TranslationContainer("RemoveUser","/istifadecini-silin","/удалить-пользователя","/remove-user"),
-        //     new TranslationContainer("BanUser","/istifadəçini-deaktiv-et","/забанить-пользователя","/ban-user"),
-        //     new TranslationContainer("SendMessageTo","/mesaj-göndərin","/Отправить сообщение","/message-to"),
-        //     new TranslationContainer("CheckBlogs","/blogları-yoxlayın","/проверить блоги","/check-blogs"),
-        //     new TranslationContainer("Logout","/cixis","/выйти","/logout"),
-        //     new TranslationContainer("EmailNotFound","E-poçt tapılmadı","Электронная почта не найдена","Email not found"),
-        //     new TranslationContainer("BecomeAdminInfo","Bu e-poçtun sahibi admin oldu","покаВладелец этого письма стал администратором","The owner of this email has become an admin"),
-        //     new TranslationContainer("IsAdminInfo","Bu e-poçtun sahibi artıq admindir","Владелец этого адреса электронной почты уже является администратором","The owner of this email is already admin"),
-        //     new TranslationContainer("BecomeUserInfo","Bu e-poçtun sahibi istifadəçi oldu","Владелец этого письма стал пользователем","The owner of this email has become user"),
-        //     new TranslationContainer("IsUserInfo","Bu e-poçtun sahibi artıq istifadəçidir","Владелец этого электронного письма уже является пользователем","The owner of this email already is user"),
-        //};
+        public const string showUser_Az = "/istifadecileri-gösterin";
+        public const string showUser_Ru = "/показать-пользователей";
+        public const string showUser_En = "/show-users";
 
+        public const string showUserByEmail_Az = "/istifadecini e-poct vasitesile gosterin";
+        public const string showUserByEmail_Ru = "/показать-пользователя-по-электронной-почте";
+        public const string showUserByEmail_En = "/show-user-by-email";
+
+        public const string showUserById_Az = "/istifadecini-id-ile-goste";
+        public const string showUserById_Ru = "/показать пользователя по id";
+        public const string showUserById_En = "/show-user-by-id";
+
+        public const string addUser_Az = "/istifadeci-elave-edin";
+        public const string addUser_Ru = "/Добавить-пользователя";
+        public const string addUser_En = "/add-user";
+
+        public const string promoteToAdmin_Az = "/admin-edin";
+        public const string promoteToAdmin_Ru = "/повысить-до-администратора";
+        public const string promoteToAdmin_En = "/promote-to-admin";
+
+        public const string depromoteToAdmin_Az = "/adminlikden-cixar";
+        public const string depromoteToAdmin_Ru = "/деактивировать-от-администратора";
+        public const string depromoteToAdmin_En = "/depromote-from-admin";
+
+        public const string updateUserSetting_Az = "/istifadeci-parametrini-yenile";
+        public const string updateUserSetting_Ru = "/обновить настройки пользователя";
+        public const string updateUserSetting_En = "/update-user-setting";
+
+        public const string removeUser_Az = "/istifadecini-silin";
+        public const string removeUser_Ru = "/удалить-пользователя";
+        public const string removeUser_En = "/remove-user";
+
+        public const string banUser_Az = "/istifadecini-deaktiv-et";
+        public const string banUser_Ru = "/забанить-пользователя";
+        public const string banUser_En = "/ban-user";
+
+        public const string sendMessageTo_Az = "/mesaj-gonderin";
+        public const string sendMessageTo_Ru = "/Отправить сообщение";
+        public const string sendMessageTo_En = "/message-to";
+
+        public const string messages_Az = "/Mesajlar";
+        public const string messages_Ru = "/Сообщения";
+        public const string messages_En = "/Messages";
+
+        public const string addBlog_Az = "/Blog-elave-et";
+        public const string addBlog_Ru = "/Добавить блог";
+        public const string addBlog_En = "/Add-Blog";
+
+        public const string noticeBlogCreated_Az = "Blog ugurla yaradildi";
+        public const string noticeBlogCreated_Ru = "Блог успешно создан";
+        public const string noticeBlogCreated_En = "The blog was successfully created";
+
+        public const string checkBlogs_Az = "/bloglari-yoxlayin";
+        public const string checkBlogs_Ru = "/проверить блоги";
+        public const string checkBlogs_En = "/check-blogs";
+
+        public const string logout_Az = "/cixis";
+        public const string logout_Ru = "/выйти";
+        public const string logout_En = "/logout";
+
+        public const string emailNotFound_Az = "E-poçt tapılmadı";
+        public const string emailNotFound_Ru = "Электронная почта не найдена";
+        public const string emailNotFound_En = "Email not found";
+
+        public const string becomeAdminInfo_Az = "Bu e-poçtun sahibi admin oldu";
+        public const string becomeAdminInfo_Ru = "Владелец этого письма стал администратором";
+        public const string becomeAdminInfo_En = "The owner of this email has become an admin";
+
+        public const string isAdminInfo_Az = "/Bu e-poçtun sahibi artıq admindir";
+        public const string isAdminInfo_Ru = "/Владелец этого адреса электронной почты уже является администратором";
+        public const string isAdminInfo_En = "/The owner of this email is already admin";
+
+        public const string becomeUserInfo_Az = "Bu e-poçtun sahibi istifadəçi oldu";
+        public const string becomeUserInfo_Ru = "Владелец этого письма стал пользователем";
+        public const string becomeUserInfo_En = "The owner of this email has become user";
+
+        public const string isUserInfo_Az = "Bu e-poçtun sahibi artıq istifadəçidir";
+        public const string isUserInfo_Ru = "Владелец этого электронного письма уже является пользователем";
+        public const string isUserInfo_En = "The owner of this email already is user";
+
+        public const string closeAccount_Az = "/Hesabi-baglayin";
+        public const string closeAccount_Ru = "/Закрыть аккаунт";
+        public const string closeAccount_En = "/CloseAccount";
+
+        public const string addComments_Az = "/serh-elave-e";
+        public const string addComments_Ru = "/добавить комментарий";
+        public const string addComments_En = "/add-comment";
+
+        public const string addCodeOfBlog_Az = "Blogun kodunu daxil edin : ";
+        public const string addCodeOfBlog_Ru = "Введите код блога : ";
+        public const string addCodeOfBlog_En = "Enter the blog code : ";
+
+        public const string addCommentTextToBlog_Az = "Mətn əlavə edin : ";
+        public const string addCommentTextToBlog_Ru = "Добавить текст : ";
+        public const string addCommentTextToBlog_En = "Add text : ";
+
+        public const string succesAddComment_Az = "Şərh uğurla əlavə edildi";
+        public const string succesAddComment_Ru = "Комментарий успешно добавлен";
+        public const string succesAddComment_En = "Comment successfully added";
+
+        public const string notFoundBlogByCode_Az = "Bu kodda heç bir vlog tapılmadı";
+        public const string notFoundBlogByCode_Ru = "В этом коде видеоблог не найден";
+        public const string notFoundBlogByCode_En = "No vlog found in this code";
+
+        public const string unsuccesCommentNotice_Az = "Mətnin uzunluğu 1 ilə 30 arasında olmalıdır və mətndə təhqiredici sözlərdən istifadə edilməməlidir.";
+        public const string unsuccesCommentNotice_Ru = "Длина текста должна быть от 1 до 30, в тексте не должно быть оскорбительных слов";
+        public const string unsuccesCommentNotice_En = "The length of the text must be between 1 and 30 and the text must not use offensive words";
 
         #endregion
     }

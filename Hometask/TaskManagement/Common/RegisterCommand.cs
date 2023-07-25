@@ -2,6 +2,7 @@
 using TaskManagement.Database.Models;
 using TaskManagement.Language.translator;
 using TaskManagement.Database.DataJson;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement.Common
 {
@@ -10,7 +11,7 @@ namespace TaskManagement.Common
         public static void Handle()
         {            
 
-            UserValidator userValidator = new UserValidator();  ///instance
+            UserValidator userValidator = new UserValidator();
 
             Console.WriteLine("");
             string firstName = userValidator.GetAndValidateFirstName();
@@ -21,7 +22,7 @@ namespace TaskManagement.Common
             User human = new User(firstName, lastName, password, email);
             DataContext.Users.Add(human);
             DataOfJson.JSonUserDocRamToFile(); //for adding data from Ram to SSD
-            translateWords.SuccesRegistr();
+            Console.WriteLine( LocalizationService.GetTranslation(TranslationKey.succesRegistr));
         }
     }
 }

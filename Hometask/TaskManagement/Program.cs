@@ -2,6 +2,7 @@
 using System.Text;
 using TaskManagement.Database.DataJson;
 using TaskManagement.Database;
+using TaskManagement.LanguageSystem;
 
 namespace TaskManagement
 {
@@ -9,7 +10,8 @@ namespace TaskManagement
     public class Program
     {
         static void Main(string[] args)
-        {           
+        {
+
             DataContext.AddUserSeeedings();
 
             DataOfJson.JsonUserDocFileToRam();
@@ -25,7 +27,7 @@ namespace TaskManagement
              while(true)
             {
                 translateWords.ShowMenu();
-                translateWords.AddCommand();
+                Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.addCommand));
                 string command = Console.ReadLine()!;
                 translateWords.LangChoise(command);
 
