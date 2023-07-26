@@ -13,8 +13,7 @@ namespace TaskManagement.LanguageSystem
 {
     public class LocalizationService
     {
-        public static CurrentLanguage CurrentCulture { get; set; } = CurrentLanguage.Az;
-
+        public static CurrentLanguage CurrentCulture { get; set; }
         public static string? GetTranslation(TranslationKey key)
         {
             Type translationConstantType = typeof(translateWords);
@@ -49,13 +48,13 @@ namespace TaskManagement.LanguageSystem
                 switch (command)
                 {
                     case "/Az":
-                        Translate.Language = CurrentLanguage.Az;
+                        CurrentCulture = CurrentLanguage.Az;
                         return;
                     case "/Ru":
-                        Translate.Language = CurrentLanguage.Ru;
+                        CurrentCulture = CurrentLanguage.Ru;
                         return;
                     case "/En":
-                        Translate.Language = CurrentLanguage.En;
+                        CurrentCulture = CurrentLanguage.En;
                         return;
                     default:
                         Console.WriteLine("Invalid command, pls try again");

@@ -14,80 +14,26 @@ namespace TaskManagement.Language.translator
     {
         public static void LangChoise(string command)
         {
-
-            
-            if (Translate.Language == CurrentLanguage.Az)
+            switch (command)
             {
-                switch (command)
-                {
-                    case "/qeydiyyat":
-                        RegisterCommand.Handle();
-                        break;
-                    case "/giris":
-                        LoginCommand.Handle();
-                        break;
-                    case "/serhlerle-bloqlari-goster":
-                        BlogAndComment.Handle();
-                        break;
-                    case "/dil-secimlerinizi-yenileyin":
-                        LocalizationService.Handle();
-                        break;
-                    case "/cixis":
-                        LocalizationService.GetTranslation(TranslationKey.byeBye);
-                        return;
-                    default:
-                        LocalizationService.GetTranslation(TranslationKey.invalidCommand);
-                        break;
-                }
-            }
-            if (Translate.Language == CurrentLanguage.Ru)
-            {
-                switch (command)
-                {
-                    case "/регистрация":
-                        RegisterCommand.Handle();
-                        break;
-                    case "/вход":
-                        LoginCommand.Handle();
-                        break;
-                    case "/показать-блоги-с-комментариями":
-                        BlogAndComment.Handle();
-                        break;
-                    case "/обновить-языковые-настройки":
-                        LocalizationService.Handle();
-                        break;
-                    case "/выход":
-                        LocalizationService.GetTranslation(TranslationKey.byeBye);
-                        return;
-                    default:
-                        LocalizationService.GetTranslation(TranslationKey.invalidCommand);
-                        break;
-                }
-            }
-            if (Translate.Language == CurrentLanguage.En)
-            {
-                switch (command)
-                {
-                    case "/register":
-                        RegisterCommand.Handle();
-                        break;
-                    case "/login":
-                        LoginCommand.Handle();
-                        break;
-                    case "/show-blogs-with-comments":
-                        BlogAndComment.Handle();
-                        break;
-                    case "/update-language-preference":
-                        LocalizationService.Handle();
-                        break;
-                    case "/exit":
-                        Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.byeBye));
-                        return;
-                    default:
-                        Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.invalidCommand));
-                        
-                        break;
-                }
+                case "1":
+                    RegisterCommand.Handle();
+                    break;
+                case "2":
+                    LoginCommand.Handle();
+                    break;
+                case "3":
+                    BlogAndComment.Handle();
+                    break;
+                case "4":
+                    LocalizationService.Handle();
+                   return;
+                case "5":
+                    LocalizationService.GetTranslation(TranslationKey.byeBye);
+                    return;
+                default:
+                    LocalizationService.GetTranslation(TranslationKey.invalidCommand);
+                    break;
             }
         }
         public static void ShowMenu()
@@ -96,11 +42,11 @@ namespace TaskManagement.Language.translator
 
 
             Console.WriteLine("");
-            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.register));
-            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.login));
-            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.showBlogsWithComments));
-            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.updateLanguage));
-            Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.exit));    
+            Console.Write("1.");Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.register));
+            Console.Write("2.");Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.login));
+            Console.Write("3.");Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.showBlogsWithComments));
+            Console.Write("4.");Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.updateLanguage));
+            Console.Write("5.");Console.WriteLine(LocalizationService.GetTranslation(TranslationKey.exit));    
             Console.WriteLine("");
         }
 
